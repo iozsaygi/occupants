@@ -9,19 +9,19 @@ AlignOperands: true
 AlignTrailingComments: false
 AlwaysBreakTemplateDeclarations: Yes
 BraceWrapping:
-  AfterCaseLabel: false
-  AfterClass: false
-  AfterControlStatement: false
-  AfterEnum: false
-  AfterFunction: false
-  AfterNamespace: false
-  AfterStruct: false
-  AfterUnion: false
-  AfterExternBlock: false
-  BeforeCatch: false
-  BeforeElse: false
-  BeforeLambdaBody: false
-  BeforeWhile: false
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: true
+  BeforeWhile: true
   SplitEmptyFunction: false
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
@@ -54,7 +54,7 @@ SpacesInAngles: false
 SpaceBeforeCpp11BracedList: true
 SpacesInContainerLiterals: true
 SpacesInCStyleCastParentheses: false
-SpacesInParentheses: false
+SpacesInParentheses: true
 TabWidth: 4
 
 # Place pointer characters on the left side.
@@ -67,3 +67,6 @@ AllowShortCaseLabelsOnASingleLine: false
 
 # Prevent single line functions.
 AllowShortFunctionsOnASingleLine: None
+
+# Put space within the square brackets.
+SpacesInSquareBrackets: true
