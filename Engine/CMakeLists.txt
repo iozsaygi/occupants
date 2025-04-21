@@ -1,3 +1,3 @@
 project(Engine)
 
-# TODO: Build as shared library.
+add_library(${PROJECT_NAME} Core/EngineSubsystem.cpp)
