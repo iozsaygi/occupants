@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-    EngineSubsystemInitializationStatus EngineSubsystem::Initialize()
+    EngineSubsystemInitializationResult EngineSubsystem::Initialize()
     {
         return SuccessfullyInitialized;
     }

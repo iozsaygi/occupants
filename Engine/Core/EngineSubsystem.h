@@ -3,7 +3,7 @@
 
 namespace Engine
 {
-    enum EngineSubsystemInitializationStatus
+    enum EngineSubsystemInitializationResult
     {
         SuccessfullyInitialized,
         FailedToInitialize,
@@ -14,7 +14,7 @@ namespace Engine
     class EngineSubsystem
     {
     public:
-        virtual EngineSubsystemInitializationStatus Initialize();
+        virtual EngineSubsystemInitializationResult Initialize();
 
         // TODO: Consider if we need to provide additional information via return type.
         virtual void Shutdown();
