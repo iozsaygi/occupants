@@ -3,4 +3,4 @@ project(occupants)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(occupants main.cpp)
+add_executable(occupants Game/Entry.cpp)
