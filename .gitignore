@@ -31,6 +31,9 @@
 *.out
 *.app
 
+# MacOS related files and folders
+*.DS_Store
+
 # CLion generated files and folders
 .idea
 cmake-build-debug
