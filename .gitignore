@@ -37,3 +37,6 @@
 # CLion generated files and folders
 .idea
 cmake-build-debug
+
+# Build pipeline generated files and folders
+build
