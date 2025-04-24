@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-    class Debugger final : EngineSubsystem
+    class Debugger final : public EngineSubsystem
     {
     public:
         EngineSubsystemInitializationResult Initialize() override;
