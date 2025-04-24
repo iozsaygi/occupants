@@ -14,6 +14,8 @@ namespace Engine
     class EngineSubsystem
     {
     public:
+        virtual ~EngineSubsystem();
+
         virtual EngineSubsystemInitializationResult Initialize();
 
         // TODO: Consider if we need to provide additional information via return type.
