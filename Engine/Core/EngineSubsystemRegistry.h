@@ -2,6 +2,7 @@
 #define ENGINE_SUBSYSTEM_REGISTRY_H
 
 #include "Subsystems/Debugger/Debugger.h"
+#include "Subsystems/Platform/Platform.h"
 
 namespace Engine
 {
@@ -11,6 +12,7 @@ namespace Engine
     {
     public:
         Debugger DebuggerSubsystem;
+        Platform PlatformSubsystem;
     };
 } // namespace Engine
 
