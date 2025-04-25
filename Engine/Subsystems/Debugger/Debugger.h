@@ -1,6 +1,7 @@
 #ifndef DEBUGGER_H
 #define DEBUGGER_H
 
+#include <cstdarg>
 #include "Core/EngineSubsystem.h"
 
 namespace Engine
@@ -11,6 +12,13 @@ namespace Engine
         EngineSubsystemInitializationResult Initialize() override;
 
         void Shutdown() override;
+
+        void Trace( const char* trace );
+        void Warning( const char* warning );
+        void Error( const char* error );
+
+    private:
+        static void LogWrapper( const char* tag, const char* message, va_list arguments );
     };
 } // namespace Engine
 
