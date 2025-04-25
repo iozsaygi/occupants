@@ -38,11 +38,11 @@ namespace Engine
         va_end( args );
     }
 
-    void Debugger::LogWrapper( const char* tag, const char* message, const va_list arguments )
+    void Debugger::LogWrapper( const char* tag, const char* message, const va_list args )
     {
         constexpr size_t bufferSize = 1024;
         char buffer[ bufferSize ];
-        vsnprintf( buffer, bufferSize, message, arguments );
+        vsnprintf( buffer, bufferSize, message, args );
         printf( "[%s] %s\n", tag, buffer );
     }
 

@@ -18,7 +18,7 @@ namespace Engine
         void Error( const char* error );
 
     private:
-        static void LogWrapper( const char* tag, const char* message, va_list arguments );
+        static void LogWrapper( const char* tag, const char* message, va_list args );
     };
 } // namespace Engine
 
