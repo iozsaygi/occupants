@@ -13,9 +13,9 @@ namespace Engine
 
         void Shutdown() override;
 
-        void Trace( const char* trace );
-        void Warning( const char* warning );
-        void Error( const char* error );
+        void Trace( const char* trace, ... );
+        void Warning( const char* warning, ... );
+        void Error( const char* error, ... );
 
     private:
         static void LogWrapper( const char* tag, const char* message, va_list args );

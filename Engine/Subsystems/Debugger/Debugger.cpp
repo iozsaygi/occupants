@@ -14,7 +14,7 @@ namespace Engine
     {
     }
 
-    void Debugger::Trace( const char* trace ) // NOLINT(*-convert-member-functions-to-static)
+    void Debugger::Trace( const char* trace, ... ) // NOLINT(*-convert-member-functions-to-static)
     {
         va_list args;
         va_start( args, trace );
@@ -22,7 +22,7 @@ namespace Engine
         va_end( args );
     }
 
-    void Debugger::Warning( const char* warning ) // NOLINT(*-convert-member-functions-to-static)
+    void Debugger::Warning( const char* warning, ... ) // NOLINT(*-convert-member-functions-to-static)
     {
         va_list args;
         va_start( args, warning );
@@ -30,7 +30,7 @@ namespace Engine
         va_end( args );
     }
 
-    void Debugger::Error( const char* error ) // NOLINT(*-convert-member-functions-to-static)
+    void Debugger::Error( const char* error, ... ) // NOLINT(*-convert-member-functions-to-static)
     {
         va_list args;
         va_start( args, error );
