@@ -23,4 +23,4 @@ namespace Engine
     };
 } // namespace Engine
 
-#endif // !ENGINE_SUBSYSTEM_H
+#endif // ENGINE_SUBSYSTEM_H

@@ -14,4 +14,4 @@ namespace Engine
     };
 } // namespace Engine
 
-#endif // !ENGINE_SUBSYSTEM_REGISTRY_H
+#endif // ENGINE_SUBSYSTEM_REGISTRY_H
