@@ -2,11 +2,15 @@
 
 namespace Engine
 {
-    void EngineEntry::TryInitializingSubsystems()
+    EngineEntryStabilityState EngineEntry::TryInitializingSubsystems()
     {
-        SubsystemRegistry.DebuggerSubsystem.Initialize();
-        SubsystemRegistry.PlatformSubsystem.Initialize();
-        SubsystemRegistry.RendererSubsystem.Initialize();
+        if ( SubsystemRegistry.DebuggerSubsystem.Initialize() == FailedToInitialize ) return Unstable;
+        if ( SubsystemRegistry.PlatformSubsystem.Initialize() == FailedToInitialize ) return Unstable;
+        if ( SubsystemRegistry.RendererSubsystem.Initialize() == FailedToInitialize ) return Unstable;
+
+        SubsystemRegistry.DebuggerSubsystem.Trace( "Successfully initialized registered engine subsystems." );
+
+        return Stable;
     }
 
     void EngineEntry::ShutdownSubsystems()

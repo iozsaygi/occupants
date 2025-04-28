@@ -5,12 +5,19 @@
 
 namespace Engine
 {
+    // Will directly communicate about engine's health to the client via this enum.
+    enum EngineEntryStabilityState
+    {
+        Stable,
+        Unstable
+    };
+
     class ENGINE_API EngineEntry
     {
     public:
         EngineSubsystemRegistry SubsystemRegistry;
 
-        void TryInitializingSubsystems();
+        EngineEntryStabilityState TryInitializingSubsystems();
         void ShutdownSubsystems();
     };
 } // namespace Engine
