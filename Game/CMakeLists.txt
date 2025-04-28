@@ -1,6 +1,6 @@
 project(Game)
 
-add_executable(${PROJECT_NAME} Entry.cpp)
+add_executable(${PROJECT_NAME} GameEntry.cpp)
 
 # Include engine source directories.
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Engine)
