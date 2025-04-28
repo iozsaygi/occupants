@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-    class EngineEntry
+    class ENGINE_API EngineEntry
     {
     public:
         EngineSubsystemRegistry SubsystemRegistry;
