@@ -6,6 +6,11 @@ namespace Engine
     class Scene final
     {
     public:
+        // Core scene lifetime cycle.
+        void Start();
+        void Update();
+        void Render();
+        void Shutdown();
     };
 } // namespace Engine
 
