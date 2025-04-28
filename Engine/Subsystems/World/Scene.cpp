@@ -10,7 +10,7 @@ namespace Engine
 
     void Scene::Update()
     {
-        // For now, we hare handling events from here, we can create event subsystem later on.
+        // TODO: For now, we hare handling events from here, we can create event subsystem later on.
         SDL_Event event;
 
         while ( SDL_PollEvent( &event ) )
