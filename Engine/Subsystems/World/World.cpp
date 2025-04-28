@@ -22,7 +22,7 @@ namespace Engine
     {
         assert( m_AttachedScene != nullptr );
 
-        m_AttachedScene->IsActive = false;
+        m_AttachedScene->IsActive = true;
         m_AttachedScene->Start();
 
         while ( m_AttachedScene->IsActive )
@@ -31,7 +31,6 @@ namespace Engine
             m_AttachedScene->Render();
         }
     }
-
 
     void World::Shutdown()
     {
