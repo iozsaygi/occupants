@@ -2,6 +2,7 @@
 #define WORLD_H
 
 #include "Core/EngineSubsystem.h"
+#include "Scene.h"
 
 namespace Engine
 {
@@ -9,8 +10,12 @@ namespace Engine
     {
     public:
         EngineSubsystemInitializationResult Initialize() override;
-
+        void AttachScene( Scene* scene );
+        void RunAttachedScene();
         void Shutdown() override;
+
+    private:
+        Scene* m_AttachedScene = nullptr;
     };
 } // namespace Engine
 

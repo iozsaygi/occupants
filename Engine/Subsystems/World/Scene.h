@@ -6,6 +6,8 @@ namespace Engine
     class Scene final
     {
     public:
+        bool IsActive;
+
         // Core scene lifetime cycle.
         void Start();
         void Update();
