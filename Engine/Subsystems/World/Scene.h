@@ -1,6 +1,8 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+#include "Subsystems/Renderer/Renderer.h"
+
 namespace Engine
 {
     class Scene final
@@ -11,7 +13,7 @@ namespace Engine
         // Core scene lifetime cycle.
         void Start();
         void Update();
-        void Render();
+        void Render( const Renderer* rendererSubsystem );
         void Shutdown();
     };
 } // namespace Engine

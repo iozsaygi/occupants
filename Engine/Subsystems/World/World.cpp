@@ -1,6 +1,8 @@
 #include "World.h"
 #include <assert.h>
 
+#include "Core/EngineSubsystemRegistry.h"
+
 namespace Engine
 {
     EngineSubsystemInitializationResult World::Initialize()
@@ -36,7 +38,7 @@ namespace Engine
         while ( m_AttachedScene->IsActive )
         {
             m_AttachedScene->Update();
-            m_AttachedScene->Render();
+            m_AttachedScene->Render( &m_AttachedEngineSubsystemRegistry->RendererSubsystem );
         }
     }
 

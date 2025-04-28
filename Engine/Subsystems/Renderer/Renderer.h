@@ -9,14 +9,12 @@ namespace Engine
     class Renderer final : public EngineSubsystem
     {
     public:
+        SDL_Window* NativeWindow = nullptr;
+        SDL_Renderer* NativeRenderer = nullptr;
+
         EngineSubsystemInitializationResult Initialize() override;
 
         void Shutdown() override;
-
-    private:
-        // Native SDL pointers that we want to hide from client.
-        SDL_Window* m_Window = nullptr;
-        SDL_Renderer* m_Renderer = nullptr;
     };
 } // namespace Engine
 
