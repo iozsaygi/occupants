@@ -8,6 +8,15 @@ namespace Engine
         return SuccessfullyInitialized;
     }
 
+    void World::AttachSubsystemRegistry( EngineSubsystemRegistry* engineSubsystemRegistry )
+    {
+        assert( engineSubsystemRegistry != nullptr );
+        assert( m_AttachedEngineSubsystemRegistry == nullptr );
+
+        m_AttachedEngineSubsystemRegistry = engineSubsystemRegistry;
+    }
+
+
     void World::AttachScene( Scene* scene )
     {
         assert( scene != nullptr );

@@ -6,15 +6,19 @@
 
 namespace Engine
 {
+    class EngineSubsystemRegistry;
+
     class World final : EngineSubsystem
     {
     public:
         EngineSubsystemInitializationResult Initialize() override;
+        void AttachSubsystemRegistry( EngineSubsystemRegistry* engineSubsystemRegistry );
         void AttachScene( Scene* scene );
         void RunAttachedScene() const;
         void Shutdown() override;
 
     private:
+        EngineSubsystemRegistry* m_AttachedEngineSubsystemRegistry = nullptr;
         Scene* m_AttachedScene = nullptr;
     };
 } // namespace Engine

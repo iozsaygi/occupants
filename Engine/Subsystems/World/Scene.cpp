@@ -16,6 +16,7 @@ namespace Engine
 
     void Scene::Shutdown()
     {
+        if ( IsActive ) IsActive = false;
     }
 
 } // namespace Engine
