@@ -10,6 +10,18 @@ namespace Engine
 
     void Scene::Update()
     {
+        // For now, we hare handling events from here, we can create event subsystem later on.
+        SDL_Event event;
+
+        while ( SDL_PollEvent( &event ) )
+        {
+            switch ( event.type )
+            {
+                case SDL_EVENT_QUIT:
+                    IsActive = false;
+                default:;
+            }
+        }
     }
 
     void Scene::Render( const Renderer* rendererSubsystem )
