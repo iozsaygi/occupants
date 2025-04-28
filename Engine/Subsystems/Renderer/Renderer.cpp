@@ -10,9 +10,6 @@ namespace Engine
         m_Renderer = SDL_CreateRenderer( m_Window, nullptr );
         if ( m_Renderer == nullptr ) return FailedToInitialize;
 
-        // TODO: This is for testing until we implement update loop for the scene graph, remove later.
-        SDL_Delay( 5000 );
-
         return SuccessfullyInitialized;
     }
 
