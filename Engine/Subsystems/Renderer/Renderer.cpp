@@ -15,6 +15,8 @@ namespace Engine
 
     void Renderer::Shutdown()
     {
+        SDL_DestroyRenderer( m_Renderer );
+        SDL_DestroyWindow( m_Window );
     }
 
 } // namespace Engine
