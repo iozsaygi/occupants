@@ -5,6 +5,7 @@
 #include "Subsystems/Debugger/Debugger.h"
 #include "Subsystems/Platform/Platform.h"
 #include "Subsystems/Renderer/Renderer.h"
+#include "Subsystems/World/World.h"
 
 namespace Engine
 {
@@ -16,6 +17,7 @@ namespace Engine
         Debugger DebuggerSubsystem;
         Platform PlatformSubsystem;
         Renderer RendererSubsystem;
+        World WorldSubsystem;
     };
 } // namespace Engine
 
