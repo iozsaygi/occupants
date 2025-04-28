@@ -19,6 +19,15 @@ namespace Engine
             {
                 case SDL_EVENT_QUIT:
                     IsActive = false;
+                case SDL_EVENT_KEY_DOWN:
+                    switch ( event.key.key )
+                    {
+                        case SDLK_ESCAPE:
+                            IsActive = false;
+                            break;
+                        default:;
+                    }
+                    break;
                 default:;
             }
         }
