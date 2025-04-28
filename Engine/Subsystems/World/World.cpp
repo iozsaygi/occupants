@@ -16,7 +16,6 @@ namespace Engine
         m_AttachedEngineSubsystemRegistry = engineSubsystemRegistry;
     }
 
-
     void World::AttachScene( Scene* scene )
     {
         assert( scene != nullptr );
