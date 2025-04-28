@@ -16,9 +16,9 @@ namespace Engine
 
     void EngineEntry::ShutdownSubsystems()
     {
-        SubsystemRegistry.DebuggerSubsystem.Shutdown();
-        SubsystemRegistry.PlatformSubsystem.Shutdown();
-        SubsystemRegistry.RendererSubsystem.Shutdown();
         SubsystemRegistry.WorldSubsystem.Shutdown();
+        SubsystemRegistry.RendererSubsystem.Shutdown();
+        SubsystemRegistry.PlatformSubsystem.Shutdown();
+        SubsystemRegistry.DebuggerSubsystem.Shutdown();
     }
 } // namespace Engine
