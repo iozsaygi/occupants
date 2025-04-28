@@ -1,6 +1,6 @@
 project(Engine)
 
-add_library(${PROJECT_NAME} SHARED Engine.cpp EngineEntry.cpp Core/EngineSubsystem.cpp Core/EngineSubsystemRegistry.cpp Subsystems/Debugger/Debugger.cpp Subsystems/Platform/Platform.cpp)
+add_library(${PROJECT_NAME} SHARED Engine.cpp EngineEntry.cpp Core/EngineSubsystem.cpp Core/EngineSubsystemRegistry.cpp Subsystems/Debugger/Debugger.cpp Subsystems/Platform/Platform.cpp Subsystems/Renderer/Renderer.cpp)
 
 # Setup further compilation flags for macOS.
 if (APPLE)

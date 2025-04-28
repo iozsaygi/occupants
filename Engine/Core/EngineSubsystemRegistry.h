@@ -4,6 +4,7 @@
 #include "EngineAPI.h"
 #include "Subsystems/Debugger/Debugger.h"
 #include "Subsystems/Platform/Platform.h"
+#include "Subsystems/Renderer/Renderer.h"
 
 namespace Engine
 {
@@ -14,6 +15,7 @@ namespace Engine
     public:
         Debugger DebuggerSubsystem;
         Platform PlatformSubsystem;
+        Renderer RendererSubsystem;
     };
 } // namespace Engine
 
