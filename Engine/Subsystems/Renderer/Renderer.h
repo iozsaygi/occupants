@@ -15,8 +15,8 @@ namespace Engine
 
     private:
         // Native SDL pointers that we want to hide from client.
-        SDL_Window* m_Window;
-        SDL_Renderer* m_Renderer;
+        SDL_Window* m_Window = nullptr;
+        SDL_Renderer* m_Renderer = nullptr;
     };
 } // namespace Engine
 
