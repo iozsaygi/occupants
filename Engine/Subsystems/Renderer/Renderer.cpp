@@ -4,7 +4,7 @@ namespace Engine
 {
     EngineSubsystemInitializationResult Renderer::Initialize()
     {
-        NativeWindow = SDL_CreateWindow( "Test", 800, 600, 0 );
+        NativeWindow = SDL_CreateWindow( "Occupants", 640, 480, 0 );
         if ( NativeWindow == nullptr ) return FailedToInitialize;
 
         NativeRenderer = SDL_CreateRenderer( NativeWindow, nullptr );
