@@ -11,7 +11,7 @@ namespace Engine
     public:
         EngineSubsystemInitializationResult Initialize() override;
         void AttachScene( Scene* scene );
-        void RunAttachedScene();
+        void RunAttachedScene() const;
         void Shutdown() override;
 
     private:

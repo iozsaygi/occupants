@@ -18,7 +18,7 @@ namespace Engine
         m_AttachedScene = scene;
     }
 
-    void World::RunAttachedScene()
+    void World::RunAttachedScene() const
     {
         assert( m_AttachedScene != nullptr );
 
