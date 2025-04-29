@@ -57,6 +57,7 @@ namespace Engine
     {
         for ( int i = 0; i < Length; i++ )
         {
+            SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 255, 255, 255, 255 );
             SDL_RenderPoint( rendererSubsystem->NativeRenderer, m_NodeGraph[ i ].Position.X,
                              m_NodeGraph[ i ].Position.Y );
         }

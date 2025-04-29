@@ -15,6 +15,9 @@ int main( int argc, char* argv[] )
     // Attach scene to world.
     engineEntry.SubsystemRegistry.WorldSubsystem.AttachScene( scene );
 
+    // Create a grid.
+    engineEntry.SubsystemRegistry.GridSubsystem.Create( 10, 10 );
+
     // Run the attached scene.
     engineEntry.SubsystemRegistry.WorldSubsystem.RunAttachedScene();
 
