@@ -1,5 +1,4 @@
 #include "Grid.h"
-
 #include <assert.h>
 
 namespace Engine
