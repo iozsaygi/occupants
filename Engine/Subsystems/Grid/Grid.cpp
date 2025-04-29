@@ -1,5 +1,7 @@
 #include "Grid.h"
 
+#include <assert.h>
+
 namespace Engine
 {
     EngineSubsystemInitializationResult Grid::Initialize()
@@ -41,6 +43,13 @@ namespace Engine
                 m_NodeGraph[ index ].Neighbors[ 3 ] = x > 0 ? index - 1 : INVALID_NODE_ID;
             }
         }
+    }
+
+    Node Grid::TryGetNodeWithID( const int id ) const
+    {
+        assert( id >= 0 && id < Length );
+
+        return m_NodeGraph[ id ];
     }
 
     void Grid::Shutdown()

@@ -15,6 +15,7 @@ namespace Engine
 
         EngineSubsystemInitializationResult Initialize() override;
         void Create( int width, int height );
+        Node TryGetNodeWithID( int id ) const;
         void Shutdown() override;
 
     private:
