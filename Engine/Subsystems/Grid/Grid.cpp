@@ -65,8 +65,12 @@ namespace Engine
         for ( int i = 0; i < Length; i++ )
         {
             SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 255, 255, 255, 255 );
-            SDL_RenderPoint( rendererSubsystem->NativeRenderer, m_NodeGraph[ i ].Position.X,
-                             m_NodeGraph[ i ].Position.Y );
+            SDL_FRect nodeRect;
+            nodeRect.x = m_NodeGraph[ i ].Position.X;
+            nodeRect.y = m_NodeGraph[ i ].Position.Y;
+            nodeRect.w = NODE_SCALE;
+            nodeRect.h = NODE_SCALE;
+            SDL_RenderRect( rendererSubsystem->NativeRenderer, &nodeRect );
         }
     }
 
