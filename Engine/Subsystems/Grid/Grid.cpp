@@ -11,6 +11,9 @@ namespace Engine
 
     void Grid::Create( const int width, const int height )
     {
+        // Clean up the previous grid graph instance.
+        if ( m_NodeGraph != nullptr ) delete m_NodeGraph;
+
         Width = width;
         Height = height;
 
@@ -45,11 +48,13 @@ namespace Engine
         }
     }
 
-    Node Grid::TryGetNodeWithID( const int id ) const
+    bool Grid::TryGetNodeWithID( const int id, Node& node ) const
     {
         assert( id >= 0 && id < Length );
 
-        return m_NodeGraph[ id ];
+        node = m_NodeGraph[ id ];
+
+        return true;
     }
 
     void Grid::Shutdown()
