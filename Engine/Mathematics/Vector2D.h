@@ -7,6 +7,8 @@ namespace Engine
     {
         float X;
         float Y;
+
+        Vector2D( float x, float y );
     };
 } // namespace Engine
 

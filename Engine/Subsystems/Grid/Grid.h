@@ -2,14 +2,23 @@
 #define GRID_H
 
 #include "Core/EngineSubsystem.h"
+#include "Node.h"
 
 namespace Engine
 {
     class Grid final : EngineSubsystem
     {
     public:
+        int Width;
+        int Height;
+        int Length;
+
         EngineSubsystemInitializationResult Initialize() override;
+        void Create( int width, int height );
         void Shutdown() override;
+
+    private:
+        Node* m_NodeGraph = nullptr;
     };
 } // namespace Engine
 
