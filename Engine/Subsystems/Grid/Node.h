@@ -17,7 +17,6 @@ namespace Engine
 
         int Neighbors[ NODE_NEIGHBOR_CAPACITY ];
 
-        // Just default 'ctor'.
         Node();
     };
 } // namespace Engine
