@@ -15,7 +15,7 @@ namespace Engine
 
         Vector2D Position;
 
-        int Neighbors[NODE_NEIGHBOR_CAPACITY];
+        int Neighbors[ NODE_NEIGHBOR_CAPACITY ];
     };
 } // namespace Engine
 
