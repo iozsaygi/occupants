@@ -3,6 +3,7 @@
 
 #include "EngineAPI.h"
 #include "Subsystems/Debugger/Debugger.h"
+#include "Subsystems/Grid/Grid.h"
 #include "Subsystems/Platform/Platform.h"
 #include "Subsystems/Renderer/Renderer.h"
 #include "Subsystems/World/World.h"
@@ -18,6 +19,7 @@ namespace Engine
         Platform PlatformSubsystem;
         Renderer RendererSubsystem;
         World WorldSubsystem;
+        Grid GridSubsystem;
     };
 } // namespace Engine
 
