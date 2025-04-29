@@ -3,8 +3,9 @@
 
 #include "Mathematics/Vector2D.h"
 
-#define INVALID_NODE_ID -1
+#define INVALID_NODE_ID ( -1 )
 #define NODE_NEIGHBOR_CAPACITY 4
+#define NODE_SCALE 10
 
 namespace Engine
 {

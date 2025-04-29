@@ -19,6 +19,13 @@ namespace Engine
 
         m_NodeGraph = new Node[ length ];
 
+        const int gridWidthPixels = width * NODE_SCALE;
+        const int gridHeightPixels = height * NODE_SCALE;
+
+        // TODO: Replace hard coded resolution calls with subsystem access. (Platform)
+        const int originX = ( 640 - gridWidthPixels ) / 2;
+        const int originY = ( 480 - gridHeightPixels ) / 2;
+
         for ( int y = 0; y < height; y++ )
         {
             for ( int x = 0; x < width; x++ )
@@ -27,7 +34,7 @@ namespace Engine
                 const int index = y * width + x;
 
                 m_NodeGraph[ index ].ID = index;
-                m_NodeGraph[ index ].Position = Vector2D( static_cast<float>( x ), static_cast<float>( y ) );
+                m_NodeGraph[ index ].Position = Vector2D( originX + x * NODE_SCALE, originY + y * NODE_SCALE );
 
                 // Possible top neighbor.
                 m_NodeGraph[ index ].Neighbors[ 0 ] = y > 0 ? index - width : INVALID_NODE_ID;
