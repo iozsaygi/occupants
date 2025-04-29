@@ -33,12 +33,13 @@ namespace Engine
         }
     }
 
-    void Scene::Render( const Renderer* rendererSubsystem )
+    void Scene::Render( const Renderer* rendererSubsystem, const Grid* gridSubsystem )
     {
         SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 0, 0, 0, 255 );
         SDL_RenderClear( rendererSubsystem->NativeRenderer );
 
-        // TODO: Render actors here via actor registry.
+        // Render subsystems first. (Optional)
+        gridSubsystem->Render( rendererSubsystem );
 
         SDL_RenderPresent( rendererSubsystem->NativeRenderer );
     }

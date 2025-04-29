@@ -40,7 +40,8 @@ namespace Engine
         while ( m_AttachedScene->IsActive )
         {
             m_AttachedScene->Update();
-            m_AttachedScene->Render( &m_AttachedEngineSubsystemRegistry->RendererSubsystem );
+            m_AttachedScene->Render( &m_AttachedEngineSubsystemRegistry->RendererSubsystem,
+                                     &m_AttachedEngineSubsystemRegistry->GridSubsystem );
         }
 
         m_AttachedScene->Shutdown();

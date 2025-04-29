@@ -53,6 +53,15 @@ namespace Engine
         return true;
     }
 
+    void Grid::Render( const Renderer* rendererSubsystem ) const
+    {
+        for ( int i = 0; i < Length; i++ )
+        {
+            SDL_RenderPoint( rendererSubsystem->NativeRenderer, m_NodeGraph[ i ].Position.X,
+                             m_NodeGraph[ i ].Position.Y );
+        }
+    }
+
     void Grid::Shutdown()
     {
         delete m_NodeGraph;
