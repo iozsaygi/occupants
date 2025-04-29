@@ -1,5 +1,5 @@
 #include "Grid.h"
-#include <assert.h>
+#include <cassert>
 
 namespace Engine
 {
@@ -10,9 +10,6 @@ namespace Engine
 
     void Grid::Create( const int width, const int height )
     {
-        // Clean up the previous grid graph instance.
-        if ( m_NodeGraph != nullptr ) delete m_NodeGraph;
-
         Width = width;
         Height = height;
 
@@ -30,7 +27,7 @@ namespace Engine
                 const int index = y * width + x;
 
                 m_NodeGraph[ index ].ID = index;
-                m_NodeGraph[ index ].Position = Vector2D( x, y );
+                m_NodeGraph[ index ].Position = Vector2D( static_cast<float>( x ), static_cast<float>( y ) );
 
                 // Possible top neighbor.
                 m_NodeGraph[ index ].Neighbors[ 0 ] = y > 0 ? index - width : INVALID_NODE_ID;
