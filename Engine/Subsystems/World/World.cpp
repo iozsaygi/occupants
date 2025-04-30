@@ -1,5 +1,5 @@
 #include "World.h"
-#include <assert.h>
+#include <cassert>
 
 #include "Core/EngineSubsystemRegistry.h"
 

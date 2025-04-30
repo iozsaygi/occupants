@@ -34,7 +34,8 @@ namespace Engine
                 const int index = y * width + x;
 
                 m_NodeGraph[ index ].ID = index;
-                m_NodeGraph[ index ].Position = Vector2D( originX + x * NODE_SCALE, originY + y * NODE_SCALE );
+                m_NodeGraph[ index ].Position = Vector2D( static_cast<float>( originX ) + NODE_SCALE * x,
+                                                          static_cast<float>( originY ) + NODE_SCALE * y );
 
                 // Possible top neighbor.
                 m_NodeGraph[ index ].Neighbors[ 0 ] = y > 0 ? index - width : INVALID_NODE_ID;
