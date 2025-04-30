@@ -10,6 +10,7 @@ namespace Engine
     class Scene final
     {
     public:
+        SceneGraph* ActiveSceneGraph = nullptr;
         bool IsActive = false;
 
         Scene();
@@ -19,9 +20,6 @@ namespace Engine
         void Update();
         void Render( const Renderer* rendererSubsystem, const Grid* gridSubsystem ) const;
         void Shutdown();
-
-    private:
-        SceneGraph* m_SceneGraph = nullptr;
     };
 } // namespace Engine
 

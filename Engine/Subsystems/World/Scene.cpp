@@ -6,15 +6,15 @@ namespace Engine
 {
     Scene::Scene()
     {
-        m_SceneGraph = new SceneGraph( 2 );
+        ActiveSceneGraph = new SceneGraph( 2 );
     }
 
     void Scene::Start() const
     {
-        for ( int i = 0; i < m_SceneGraph->Length; i++ )
+        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
         {
             Actor* actor = nullptr;
-            if ( !m_SceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
+            if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
 
             actor->OnSceneStart();
         }
@@ -44,10 +44,10 @@ namespace Engine
             }
 
             // Updating order is the exact same with the scene graph registry indices.
-            for ( int i = 0; i < m_SceneGraph->Length; i++ )
+            for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
             {
                 Actor* actor = nullptr;
-                if ( !m_SceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
+                if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
 
                 // TODO: Replace the delta time with the actual value.
                 actor->OnSceneUpdate( 1.0f );
@@ -71,15 +71,15 @@ namespace Engine
     {
         if ( IsActive ) IsActive = false;
 
-        for ( int i = 0; i < m_SceneGraph->Length; i++ )
+        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
         {
             Actor* actor = nullptr;
-            if ( !m_SceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
+            if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
 
             actor->OnSceneShutdown();
         }
 
-        delete m_SceneGraph;
+        delete ActiveSceneGraph;
     }
 
 } // namespace Engine
