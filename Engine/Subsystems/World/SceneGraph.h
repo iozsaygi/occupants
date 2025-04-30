@@ -14,7 +14,7 @@ namespace Engine
         explicit SceneGraph( int actorCapacity );
         ~SceneGraph();
 
-        bool TryRegisterActor( Actor* actor ) const;
+        bool TryRegisterActor( Actor* actor );
 
     private:
         Actor** m_Actors = nullptr;
