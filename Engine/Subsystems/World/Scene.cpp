@@ -55,8 +55,7 @@ namespace Engine
         }
     }
 
-    void Scene::Render( const Renderer* rendererSubsystem, const Grid* gridSubsystem ) const
-    // NOLINT(*-convert-member-functions-to-static)
+    void Scene::Render( const Renderer* rendererSubsystem, const Grid* gridSubsystem ) const // NOLINT(*-convert-member-functions-to-static)
     {
         SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 0, 0, 0, 255 );
         SDL_RenderClear( rendererSubsystem->NativeRenderer );
