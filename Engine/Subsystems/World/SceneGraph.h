@@ -15,6 +15,7 @@ namespace Engine
         ~SceneGraph();
 
         bool TryRegisterActor( Actor* actor );
+        bool TryGetActorBySceneGraphIndex( int index, Actor*& actor ) const;
 
     private:
         Actor** m_Actors = nullptr;

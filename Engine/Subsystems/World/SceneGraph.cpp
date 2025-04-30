@@ -29,6 +29,14 @@ namespace Engine
         return true;
     }
 
+    bool SceneGraph::TryGetActorBySceneGraphIndex( const int index, Actor*& actor ) const
+    {
+        if ( index < 0 || index >= Length ) return false;
+
+        actor = m_Actors[ index ];
+        return true;
+    }
+
     bool SceneGraph::TryFindFirstAvailableSceneGraphIndex( int& index ) const
     {
         for ( int i = 0; i < Length; i++ )

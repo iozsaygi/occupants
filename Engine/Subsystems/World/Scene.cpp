@@ -4,8 +4,20 @@
 
 namespace Engine
 {
-    void Scene::Start()
+    Scene::Scene()
     {
+        m_SceneGraph = new SceneGraph( 2 );
+    }
+
+    void Scene::Start() const
+    {
+        for ( int i = 0; i < m_SceneGraph->Length; i++ )
+        {
+            Actor* actor = nullptr;
+            if ( !m_SceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
+
+            actor->OnSceneStart();
+        }
     }
 
     void Scene::Update()
@@ -30,11 +42,21 @@ namespace Engine
                     break;
                 default:;
             }
+
+            // Updating order is the exact same with the scene graph registry indices.
+            for ( int i = 0; i < m_SceneGraph->Length; i++ )
+            {
+                Actor* actor = nullptr;
+                if ( !m_SceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
+
+                // TODO: Replace the delta time with the actual value.
+                actor->OnSceneUpdate( 1.0f );
+            }
         }
     }
 
-    void Scene::Render( const Renderer* rendererSubsystem,
-                        const Grid* gridSubsystem ) // NOLINT(*-convert-member-functions-to-static)
+    void Scene::Render( const Renderer* rendererSubsystem, const Grid* gridSubsystem ) const
+    // NOLINT(*-convert-member-functions-to-static)
     {
         SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 0, 0, 0, 255 );
         SDL_RenderClear( rendererSubsystem->NativeRenderer );
@@ -48,6 +70,16 @@ namespace Engine
     void Scene::Shutdown()
     {
         if ( IsActive ) IsActive = false;
+
+        for ( int i = 0; i < m_SceneGraph->Length; i++ )
+        {
+            Actor* actor = nullptr;
+            if ( !m_SceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
+
+            actor->OnSceneShutdown();
+        }
+
+        delete m_SceneGraph;
     }
 
 } // namespace Engine
