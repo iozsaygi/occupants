@@ -9,12 +9,19 @@
 
 namespace Engine
 {
+    enum NodeState
+    {
+        Available,
+        Blocked
+    };
+
     struct Node
     {
         // Unique ID representing the node within the grid. Can be useful if node equality checks required.
         int ID;
 
         Vector2D Position;
+        NodeState State;
 
         int Neighbors[ NODE_NEIGHBOR_CAPACITY ];
 
