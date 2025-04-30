@@ -18,7 +18,7 @@ namespace Engine
         // Core scene lifetime cycle.
         void Start() const;
         void Update();
-        void Render( const Renderer* rendererSubsystem, const Grid* gridSubsystem ) const;
+        void Render( Renderer* rendererSubsystem, const Grid* gridSubsystem ) const;
         void Shutdown();
     };
 } // namespace Engine

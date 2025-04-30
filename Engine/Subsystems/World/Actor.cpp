@@ -12,6 +12,10 @@ namespace Engine
     {
     }
 
+    void Actor::OnSceneRender( Renderer* rendererSubsystem )
+    {
+    }
+
     void Actor::OnSceneShutdown()
     {
     }

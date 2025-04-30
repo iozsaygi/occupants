@@ -1,6 +1,8 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+#include "Subsystems/Renderer/Renderer.h"
+
 namespace Engine
 {
     // No component architecture implemented and will not be implemented until really needed.
@@ -13,6 +15,7 @@ namespace Engine
         virtual ~Actor();
         virtual void OnSceneStart();
         virtual void OnSceneUpdate( float deltaTime );
+        virtual void OnSceneRender( Renderer* rendererSubsystem );
         virtual void OnSceneShutdown();
     };
 } // namespace Engine

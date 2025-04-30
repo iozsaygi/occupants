@@ -55,13 +55,24 @@ namespace Engine
         }
     }
 
-    void Scene::Render( const Renderer* rendererSubsystem, const Grid* gridSubsystem ) const // NOLINT(*-convert-member-functions-to-static)
+    void Scene::Render( Renderer* rendererSubsystem,
+                        const Grid* gridSubsystem ) const // NOLINT(*-convert-member-functions-to-static)
     {
         SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 0, 0, 0, 255 );
         SDL_RenderClear( rendererSubsystem->NativeRenderer );
 
         // Render subsystems first. (Optional)
         gridSubsystem->Render( rendererSubsystem );
+
+        // Render the registered actors within active scene graph.
+        // Currently, the order of rendering is totally dependent on the indices of actors within their scene graph.
+        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
+        {
+            Actor* actor = nullptr;
+            if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
+
+            actor->OnSceneRender( rendererSubsystem );
+        }
 
         SDL_RenderPresent( rendererSubsystem->NativeRenderer );
     }
