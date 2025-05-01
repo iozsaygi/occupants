@@ -5,6 +5,13 @@ generated grid map to win.
 
 Currently, the development is focused on macOS, but Windows will also be supported at some point.
 
+## Dependencies
+
+The following dependencies are automatically downloaded, extracted, and linked to builds, which means the end user of
+this repository won't have to deal with dependency management:
+
+- [SDL3](https://www.libsdl.org)
+
 ## Building
 
 ### macOS
