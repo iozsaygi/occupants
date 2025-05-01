@@ -1,5 +1,7 @@
 #include "World.h"
 #include <cassert>
+#include <chrono>
+#include <thread>
 
 #include "Core/EngineSubsystemRegistry.h"
 
@@ -39,9 +41,30 @@ namespace Engine
         m_AttachedScene->IsActive = true;
         m_AttachedScene->Start();
 
+        auto lastRegisteredTime = std::chrono::high_resolution_clock::now();
+
+        // Targeting 30 frames per second, maybe make this somehow adjustable by game.
+        constexpr float targetFrameTime = 1.0f / 30.0f;
+
         while ( m_AttachedScene->IsActive )
         {
-            m_AttachedScene->Update();
+            auto currentTime = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<float> elapsedTime = currentTime - lastRegisteredTime;
+
+            float deltaTime = elapsedTime.count();
+
+            lastRegisteredTime = currentTime;
+
+            if ( deltaTime < targetFrameTime )
+            {
+                std::this_thread::sleep_for( std::chrono::duration<float>( targetFrameTime - deltaTime ) );
+                currentTime = std::chrono::high_resolution_clock::now();
+                elapsedTime = currentTime - lastRegisteredTime;
+                deltaTime = elapsedTime.count();
+                lastRegisteredTime = currentTime;
+            }
+
+            m_AttachedScene->Update( deltaTime );
             m_AttachedScene->Render( &m_AttachedEngineSubsystemRegistry->RendererSubsystem,
                                      &m_AttachedEngineSubsystemRegistry->GridSubsystem );
         }

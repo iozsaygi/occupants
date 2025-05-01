@@ -20,7 +20,7 @@ namespace Engine
         }
     }
 
-    void Scene::Update()
+    void Scene::Update( const float deltaTime )
     {
         // TODO: For now, we hare handling events from here, we can create event subsystem later on.
         SDL_Event event;
@@ -49,8 +49,7 @@ namespace Engine
                 Actor* actor = nullptr;
                 if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
 
-                // TODO: Replace the delta time with the actual value.
-                actor->OnSceneUpdate( 1.0f );
+                actor->OnSceneUpdate( deltaTime );
             }
         }
     }
