@@ -1,6 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+#include "EventDispatcher.h"
 #include "SceneGraph.h"
 #include "Subsystems/Grid/Grid.h"
 #include "Subsystems/Renderer/Renderer.h"
@@ -20,6 +21,9 @@ namespace Engine
         void Update( float deltaTime );
         void Render( Renderer* rendererSubsystem, const Grid* gridSubsystem ) const;
         void Shutdown();
+
+    private:
+        EventDispatcher m_EventDispatcher;
     };
 } // namespace Engine
 

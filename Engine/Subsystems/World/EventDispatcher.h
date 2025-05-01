@@ -3,8 +3,18 @@
 
 namespace Engine
 {
+    enum DispatchableEvent
+    {
+        None,
+
+        // Events related to core engine loop.
+        EngineShutdown
+    };
+
     class EventDispatcher final
     {
+    public:
+        DispatchableEvent TryDispatchingEvent();
     };
 } // namespace Engine
 

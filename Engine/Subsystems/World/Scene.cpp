@@ -22,35 +22,17 @@ namespace Engine
 
     void Scene::Update( const float deltaTime )
     {
-        // TODO: For now, we hare handling events from here, we can create event subsystem later on.
-        SDL_Event event;
+        const DispatchableEvent dispatchedEventForCurrentFrame = m_EventDispatcher.TryDispatchingEvent();
 
-        while ( SDL_PollEvent( &event ) )
+        if ( dispatchedEventForCurrentFrame == EngineShutdown ) IsActive = false;
+
+        // Updating order is the exact same with the scene graph registry indices.
+        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
         {
-            switch ( event.type )
-            {
-                case SDL_EVENT_QUIT:
-                    IsActive = false;
-                case SDL_EVENT_KEY_DOWN:
-                    switch ( event.key.key )
-                    {
-                        case SDLK_ESCAPE:
-                            IsActive = false;
-                            break;
-                        default:;
-                    }
-                    break;
-                default:;
-            }
+            Actor* actor = nullptr;
+            if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
 
-            // Updating order is the exact same with the scene graph registry indices.
-            for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
-            {
-                Actor* actor = nullptr;
-                if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
-
-                actor->OnSceneUpdate( deltaTime );
-            }
+            actor->OnSceneUpdate( deltaTime );
         }
     }
 
