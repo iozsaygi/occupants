@@ -3,7 +3,6 @@
 
 #include "EngineAPI.h"
 #include "Subsystems/Debugger/Debugger.h"
-#include "Subsystems/EventDispatcher/EventDispatcher.h"
 #include "Subsystems/Grid/Grid.h"
 #include "Subsystems/Platform/Platform.h"
 #include "Subsystems/Renderer/Renderer.h"
@@ -21,7 +20,6 @@ namespace Engine
         Renderer RendererSubsystem;
         World WorldSubsystem;
         Grid GridSubsystem;
-        EventDispatcher EventDispatcherSubsystem;
     };
 } // namespace Engine
 
