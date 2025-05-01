@@ -2,7 +2,8 @@ project(Engine)
 
 add_library(${PROJECT_NAME} SHARED Engine.cpp EngineEntry.cpp Core/EngineSubsystem.cpp Core/EngineSubsystemRegistry.cpp Subsystems/Debugger/Debugger.cpp
         Subsystems/Platform/Platform.cpp Subsystems/Renderer/Renderer.cpp Subsystems/World/World.cpp Subsystems/World/Actor.cpp
-        Subsystems/World/Scene.cpp Subsystems/Grid/Grid.cpp Subsystems/Grid/Node.cpp Mathematics/Vector2D.cpp Subsystems/World/SceneGraph.cpp)
+        Subsystems/World/Scene.cpp Subsystems/Grid/Grid.cpp Subsystems/Grid/Node.cpp Mathematics/Vector2D.cpp Subsystems/World/SceneGraph.cpp
+        Subsystems/World/EventDispatcher.cpp)
 
 # Setup further compilation flags for macOS.
 if (APPLE)
