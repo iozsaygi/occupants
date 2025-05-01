@@ -32,7 +32,7 @@ namespace Engine
             Actor* actor = nullptr;
             if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
 
-            actor->OnSceneUpdate( deltaTime );
+            actor->OnSceneUpdate( deltaTime, dispatchedEventForCurrentFrame );
         }
     }
 

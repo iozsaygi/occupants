@@ -1,6 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+#include "EventDispatcher.h"
 #include "Subsystems/Renderer/Renderer.h"
 
 namespace Engine
@@ -14,7 +15,7 @@ namespace Engine
     public:
         virtual ~Actor();
         virtual void OnSceneStart();
-        virtual void OnSceneUpdate( float deltaTime );
+        virtual void OnSceneUpdate( float deltaTime, DispatchableEvent dispatchedEventForCurrentFrame );
         virtual void OnSceneRender( Renderer* rendererSubsystem );
         virtual void OnSceneShutdown();
     };

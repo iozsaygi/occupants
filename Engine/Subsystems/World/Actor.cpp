@@ -8,7 +8,7 @@ namespace Engine
     {
     }
 
-    void Actor::OnSceneUpdate( float deltaTime )
+    void Actor::OnSceneUpdate( float deltaTime, DispatchableEvent dispatchedEventForCurrentFrame )
     {
     }
 
