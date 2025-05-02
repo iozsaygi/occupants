@@ -10,6 +10,7 @@ void Player::OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatche
 
 void Player::OnSceneRender( Engine::Renderer* rendererSubsystem )
 {
+    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale );
 }
 
 void Player::OnSceneShutdown()

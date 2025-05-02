@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-    Actor::Actor() : Position( 0.0f, 0.0f )
+    Actor::Actor() : Position( 0.0f, 0.0f ), Scale( 32.0f, 32.0f )
     {
     }
 
