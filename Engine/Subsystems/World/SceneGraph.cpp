@@ -8,7 +8,7 @@ namespace Engine
         assert( actorCapacity > 0 );
 
         m_Actors = new Actor*[ actorCapacity ];
-        Length = 0;
+        Length = actorCapacity;
     }
 
     SceneGraph::~SceneGraph()
