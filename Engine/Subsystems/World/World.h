@@ -11,8 +11,6 @@ namespace Engine
     class World final : EngineSubsystem
     {
     public:
-        Scene* AttachedScene = nullptr;
-
         EngineSubsystemInitializationResult Initialize() override;
         void AttachSubsystemRegistry( EngineSubsystemRegistry* engineSubsystemRegistry );
         void AttachScene( Scene* scene );
@@ -21,6 +19,7 @@ namespace Engine
 
     private:
         EngineSubsystemRegistry* m_AttachedEngineSubsystemRegistry = nullptr;
+        Scene* m_AttachedScene = nullptr;
     };
 } // namespace Engine
 

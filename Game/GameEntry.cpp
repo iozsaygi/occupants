@@ -23,7 +23,7 @@ int main( int argc, char* argv[] )
     const auto player = new Player();
 
     // Register actors to the scene.
-    if ( !engineEntry.SubsystemRegistry.WorldSubsystem.AttachedScene->ActiveSceneGraph->TryRegisterActor( player ) )
+    if ( !scene->ActiveSceneGraph->TryRegisterActor( player ) )
     {
         engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
             "Failed to register 'Player' actor to the attached scene!" );
