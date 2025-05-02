@@ -20,7 +20,7 @@ namespace Engine
         fRect.y = at.Y;
         fRect.w = size.X;
         fRect.h = size.Y;
-        SDL_RenderRect( NativeRenderer, &fRect );
+        SDL_RenderFillRect( NativeRenderer, &fRect );
     }
 
     void Renderer::Shutdown()
