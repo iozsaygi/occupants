@@ -9,7 +9,7 @@ namespace Engine
     class SceneGraph final
     {
     public:
-        int Length;
+        int Capacity;
 
         explicit SceneGraph( int actorCapacity );
         ~SceneGraph();

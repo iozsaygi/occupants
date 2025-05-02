@@ -8,7 +8,7 @@ namespace Engine
         assert( actorCapacity > 0 );
 
         m_Actors = new Actor*[ actorCapacity ];
-        Length = actorCapacity;
+        Capacity = actorCapacity;
     }
 
     SceneGraph::~SceneGraph()
@@ -30,7 +30,7 @@ namespace Engine
 
     bool SceneGraph::TryGetActorBySceneGraphIndex( const int index, Actor*& actor ) const
     {
-        if ( index < 0 || index >= Length ) return false;
+        if ( index < 0 || index >= Capacity ) return false;
 
         actor = m_Actors[ index ];
         return true;
@@ -38,7 +38,7 @@ namespace Engine
 
     bool SceneGraph::TryFindFirstAvailableSceneGraphIndex( int& index ) const
     {
-        for ( int i = 0; i < Length; i++ )
+        for ( int i = 0; i < Capacity; i++ )
         {
             if ( m_Actors[ i ] == nullptr )
             {

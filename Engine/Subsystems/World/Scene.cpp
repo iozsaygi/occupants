@@ -11,7 +11,7 @@ namespace Engine
 
     void Scene::Start() const
     {
-        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
+        for ( int i = 0; i < ActiveSceneGraph->Capacity; i++ )
         {
             Actor* actor = nullptr;
             if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
@@ -27,7 +27,7 @@ namespace Engine
         if ( dispatchedEventForCurrentFrame == EngineShutdown ) IsActive = false;
 
         // Updating order is the exact same with the scene graph registry indices.
-        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
+        for ( int i = 0; i < ActiveSceneGraph->Capacity; i++ )
         {
             Actor* actor = nullptr;
             if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
@@ -47,7 +47,7 @@ namespace Engine
 
         // Render the registered actors within active scene graph.
         // Currently, the order of rendering is totally dependent on the indices of actors within their scene graph.
-        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
+        for ( int i = 0; i < ActiveSceneGraph->Capacity; i++ )
         {
             Actor* actor = nullptr;
             if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
@@ -62,7 +62,7 @@ namespace Engine
     {
         if ( IsActive ) IsActive = false;
 
-        for ( int i = 0; i < ActiveSceneGraph->Length; i++ )
+        for ( int i = 0; i < ActiveSceneGraph->Capacity; i++ )
         {
             Actor* actor = nullptr;
             if ( !ActiveSceneGraph->TryGetActorBySceneGraphIndex( i, actor ) ) continue;
