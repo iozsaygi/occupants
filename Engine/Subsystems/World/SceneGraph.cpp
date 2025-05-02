@@ -17,7 +17,7 @@ namespace Engine
         delete[] m_Actors;
     }
 
-    bool SceneGraph::TryRegisterActor( Actor* actor ) const
+    bool SceneGraph::TryRegisterActor( Actor* actor )
     {
         assert( actor != nullptr );
 
