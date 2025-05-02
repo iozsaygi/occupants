@@ -1,3 +1,4 @@
+#include "Actors/Player.h"
 #include "Engine.h"
 
 int main( int argc, char* argv[] )
@@ -18,12 +19,20 @@ int main( int argc, char* argv[] )
     // Create a grid.
     engineEntry.SubsystemRegistry.GridSubsystem.Create( 10, 10 );
 
+    // Create instances of our actors.
+    const auto player = new Player();
+
+    // Register actors to the scene.
+    engineEntry.SubsystemRegistry.WorldSubsystem.AttachedScene->ActiveSceneGraph->TryRegisterActor( player );
+
     // Run the attached scene.
     engineEntry.SubsystemRegistry.WorldSubsystem.RunAttachedScene();
 
     // Shutdown the subsystems, clean up resources.
     engineEntry.ShutdownSubsystems();
 
+    // Pointer clean up.
+    delete player;
     delete scene;
 
     return 0;

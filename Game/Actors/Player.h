@@ -3,7 +3,7 @@
 
 #include "Engine.h"
 
-class Player final : Engine::Actor
+class Player final : public Engine::Actor
 {
 public:
     void OnSceneStart() override;
