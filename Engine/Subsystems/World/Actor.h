@@ -2,6 +2,7 @@
 #define ACTOR_H
 
 #include "EventDispatcher.h"
+#include "Mathematics/Vector2D.h"
 #include "Subsystems/Renderer/Renderer.h"
 
 namespace Engine
@@ -13,6 +14,10 @@ namespace Engine
     class Actor
     {
     public:
+        Vector2D Position;
+
+        Actor();
+
         virtual ~Actor();
         virtual void OnSceneStart();
         virtual void OnSceneUpdate( float deltaTime, DispatchableEvent dispatchedEventForCurrentFrame );
