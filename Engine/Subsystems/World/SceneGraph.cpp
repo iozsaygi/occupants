@@ -16,7 +16,7 @@ namespace Engine
         delete[] m_Actors;
     }
 
-    bool SceneGraph::TryRegisterActor( Actor* actor )
+    bool SceneGraph::TryRegisterActor( Actor* actor ) const
     {
         assert( actor != nullptr );
 
@@ -24,7 +24,6 @@ namespace Engine
         if ( !TryFindFirstAvailableSceneGraphIndex( availableSceneGraphIndex ) ) return false;
 
         m_Actors[ availableSceneGraphIndex ] = actor;
-        Length++;
 
         return true;
     }
