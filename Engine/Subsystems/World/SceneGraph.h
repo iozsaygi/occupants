@@ -10,6 +10,7 @@ namespace Engine
     {
     public:
         int Capacity;
+        int Count;
 
         explicit SceneGraph( int actorCapacity );
         ~SceneGraph();

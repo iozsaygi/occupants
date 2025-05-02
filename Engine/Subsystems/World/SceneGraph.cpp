@@ -9,6 +9,7 @@ namespace Engine
 
         m_Actors = new Actor*[ actorCapacity ];
         Capacity = actorCapacity;
+        Count = 0;
     }
 
     SceneGraph::~SceneGraph()
@@ -24,6 +25,7 @@ namespace Engine
         if ( !TryFindFirstAvailableSceneGraphIndex( availableSceneGraphIndex ) ) return false;
 
         m_Actors[ availableSceneGraphIndex ] = actor;
+        Count++;
 
         return true;
     }

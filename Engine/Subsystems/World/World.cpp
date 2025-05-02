@@ -34,7 +34,9 @@ namespace Engine
     {
         assert( m_AttachedScene != nullptr );
 
-        m_AttachedEngineSubsystemRegistry->DebuggerSubsystem.Trace( "Starting to run update loop for attached scene." );
+        m_AttachedEngineSubsystemRegistry->DebuggerSubsystem.Trace(
+            "Starting to run update loop for attached scene. There are %d actors registered to the scene.",
+            m_AttachedScene->ActiveSceneGraph->Count );
 
         m_AttachedScene->IsActive = true;
         m_AttachedScene->Start();
