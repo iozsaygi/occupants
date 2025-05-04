@@ -10,7 +10,8 @@ void Player::OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatche
 
 void Player::OnSceneRender( Engine::Renderer* rendererSubsystem )
 {
-    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale );
+    constexpr Engine::Color color = { 0, 0, 255, 0 };
+    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale, color );
 }
 
 void Player::OnSceneShutdown()
