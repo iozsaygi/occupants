@@ -13,8 +13,10 @@ namespace Engine
         return SuccessfullyInitialized;
     }
 
-    void Renderer::RenderDebugRectangleAtPosition( const Vector2D at, const Vector2D size ) const
+    void Renderer::RenderDebugRectangleAtPosition( const Vector2D at, const Vector2D size, const Color color ) const
     {
+        SDL_SetRenderDrawColor( NativeRenderer, color.R, color.G, color.B, color.A );
+
         SDL_FRect fRect;
         fRect.x = at.X;
         fRect.y = at.Y;
