@@ -22,13 +22,6 @@ int main( int argc, char* argv[] )
             "Failed to register 'Player' actor to the attached scene!" );
     }
 
-    Engine::Node firstPlayerSpawnNode;
-
-    if ( engineEntry.SubsystemRegistry.GridSubsystem.TryGetNodeWithID( 90, firstPlayerSpawnNode ) )
-    {
-        player->MoveToNode( firstPlayerSpawnNode );
-    }
-
     engineEntry.SubsystemRegistry.WorldSubsystem.RunAttachedScene();
 
     // Shutdown the subsystems, clean up resources.

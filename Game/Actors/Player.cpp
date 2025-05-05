@@ -2,6 +2,14 @@
 
 void Player::OnSceneStart()
 {
+    auto& engineEntry = Engine::EngineEntry::Singleton();
+    m_GridSubsystem = &engineEntry.SubsystemRegistry.GridSubsystem;
+
+    Engine::Node spawnNode;
+    if ( m_GridSubsystem->TryGetNodeWithID( 90, spawnNode ) )
+    {
+        MoveToNode( spawnNode );
+    }
 }
 
 void Player::OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame )
@@ -18,8 +26,15 @@ void Player::OnSceneShutdown()
 {
 }
 
-void Player::MoveToNode( const Engine::Node& node )
+void Player::MoveToNode( Engine::Node& node )
 {
-    Position.X = node.Position.X;
-    Position.Y = node.Position.Y;
+    // First try to remove existing storage.
+    m_GridSubsystem->ActorRegistry->TryRemoveActor( this );
+
+    // Now try to actually move actor to target node.
+    if ( m_GridSubsystem->ActorRegistry->TryRegisterActor( node, this ) )
+    {
+        Position.X = node.Position.X;
+        Position.Y = node.Position.Y;
+    }
 }

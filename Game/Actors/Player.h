@@ -11,7 +11,10 @@ public:
     void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
     void OnSceneShutdown() override;
 
-    void MoveToNode( const Engine::Node& node );
+    void MoveToNode( Engine::Node& node );
+
+private:
+    Engine::Grid* m_GridSubsystem = nullptr;
 };
 
 #endif // PLAYER_H
