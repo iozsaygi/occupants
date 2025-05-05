@@ -2,6 +2,7 @@
 #define GRID_H
 
 #include "Core/EngineSubsystem.h"
+#include "GridActorRegistry.h"
 #include "Node.h"
 #include "Subsystems/Renderer/Renderer.h"
 
@@ -13,6 +14,7 @@ namespace Engine
         int Width;
         int Height;
         int Length;
+        GridActorRegistry* ActorRegistry;
 
         EngineSubsystemInitializationResult Initialize() override;
         void Create( int width, int height );

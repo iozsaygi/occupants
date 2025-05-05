@@ -5,6 +5,8 @@ namespace Engine
 {
     EngineSubsystemInitializationResult Grid::Initialize()
     {
+        ActorRegistry = new GridActorRegistry();
+
         return SuccessfullyInitialized;
     }
 
@@ -77,6 +79,7 @@ namespace Engine
 
     void Grid::Shutdown()
     {
+        delete ActorRegistry;
         delete m_NodeGraph;
     }
 } // namespace Engine
