@@ -6,7 +6,7 @@ namespace Engine
 {
     Scene::Scene()
     {
-        ActiveSceneGraph = new SceneGraph( 1 );
+        ActiveSceneGraph = new SceneGraph( 2 );
     }
 
     void Scene::Start() const

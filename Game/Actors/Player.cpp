@@ -63,6 +63,49 @@ void Player::OnSceneUpdate( float deltaTime, const Engine::DispatchableEvent dis
             default:;
         }
     }
+    else
+    {
+        switch ( dispatchedEventForCurrentFrame )
+        {
+            case Engine::UpKeyDown:
+            {
+                Engine::Node upwardsNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Upwards, m_OccupiedNode, upwardsNode ) )
+                {
+                    MoveToNode( upwardsNode );
+                }
+            }
+            break;
+            case Engine::LeftKeyDown:
+            {
+                Engine::Node leftNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Left, m_OccupiedNode, leftNode ) )
+                {
+                    MoveToNode( leftNode );
+                }
+            }
+            break;
+            case Engine::DownKeyDown:
+            {
+                Engine::Node downwardsNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Downwards, m_OccupiedNode, downwardsNode ) )
+                {
+                    MoveToNode( downwardsNode );
+                }
+            }
+            break;
+            case Engine::RightKeyDown:
+            {
+                Engine::Node rightNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Right, m_OccupiedNode, rightNode ) )
+                {
+                    MoveToNode( rightNode );
+                }
+            }
+            break;
+            default:;
+        }
+    }
 }
 
 void Player::OnSceneRender( Engine::Renderer* rendererSubsystem )

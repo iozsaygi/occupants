@@ -15,11 +15,18 @@ int main( int argc, char* argv[] )
     engineEntry.SubsystemRegistry.GridSubsystem.Create( 10, 10 );
 
     const auto firstPlayer = new Player( WASD, 90 );
+    const auto secondPlayer = new Player( Arrows, 9 );
 
     if ( !scene->ActiveSceneGraph->TryRegisterActor( firstPlayer ) )
     {
         engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
             "Failed to register 'First Player' actor to the attached scene!" );
+    }
+
+    if ( !scene->ActiveSceneGraph->TryRegisterActor( secondPlayer ) )
+    {
+        engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
+            "Failed to register 'Second Player' actor to the attached scene!" );
     }
 
     engineEntry.SubsystemRegistry.WorldSubsystem.RunAttachedScene();
@@ -29,6 +36,7 @@ int main( int argc, char* argv[] )
 
     // Pointer clean up.
     delete firstPlayer;
+    delete secondPlayer;
     delete scene;
 
     return 0;
