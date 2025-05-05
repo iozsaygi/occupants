@@ -12,7 +12,7 @@ void Player::OnSceneStart()
     }
 }
 
-void Player::OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame )
+void Player::OnSceneUpdate( float deltaTime, const Engine::DispatchableEvent dispatchedEventForCurrentFrame )
 {
     switch ( dispatchedEventForCurrentFrame )
     {
