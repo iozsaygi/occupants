@@ -26,6 +26,7 @@ namespace Engine
         int Neighbors[ NODE_NEIGHBOR_CAPACITY ];
 
         Node();
+        bool operator()( const Node& first, const Node& second ) const;
     };
 } // namespace Engine
 
