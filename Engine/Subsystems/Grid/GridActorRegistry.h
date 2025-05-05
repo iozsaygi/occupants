@@ -12,11 +12,15 @@ namespace Engine
     public:
         GridActorRegistry();
 
-        bool TryRegisterActorToNode( Node& node, Actor* actor );
+        bool TryRegisterActor( Node& node, Actor* actor );
+        bool TryRemoveActor( const Actor* actor );
         bool TryGetNodeOccupiedByActor( const Actor* actor, Node& node ) const;
 
     private:
-        std::map<Node, Actor*> m_Registry;
+        // Using 'int' as key to avoid custom hashing for 'Node' types.
+        // The 'ID' property within 'Node' struct is already unique one.
+        // So this is essentially maps to 'std::unordered_map<Node.ID, Actor*>'.
+        std::unordered_map<int, Actor*> m_Registry;
     };
 } // namespace Engine
 

@@ -10,11 +10,6 @@ namespace Engine
         for ( int& Neighbor: Neighbors ) Neighbor = INVALID_NODE_ID;
     }
 
-    bool Node::operator()( const Node& first, const Node& second ) const
-    {
-        return first.ID == second.ID;
-    }
-
     bool Node::operator==( const Node& node ) const
     {
         return ID == node.ID;

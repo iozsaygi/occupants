@@ -5,22 +5,36 @@ namespace Engine
 {
     GridActorRegistry::GridActorRegistry()
     {
-        m_Registry = std::map<Node, Actor*>();
+        m_Registry = std::unordered_map<int, Actor*>();
     }
 
-    bool GridActorRegistry::TryRegisterActorToNode( Node& node, Actor* actor )
+    bool GridActorRegistry::TryRegisterActor( Node& node, Actor* actor )
     {
         assert( actor != nullptr );
 
-        const auto lookupQuery = m_Registry.find( node );
+        const auto lookupQuery = m_Registry.find( node.ID );
         if ( lookupQuery == m_Registry.end() )
         {
             // Failed to find actor on the target node, it is safe to register.
-            m_Registry.insert( { node, actor } );
+            m_Registry.insert( { node.ID, actor } );
             return true;
         }
 
         // The target node already contains another actor.
+        return false;
+    }
+
+    bool GridActorRegistry::TryRemoveActor( const Actor* actor )
+    {
+        assert( actor != nullptr );
+
+        Node nodeOccupiedByActor;
+        if ( TryGetNodeOccupiedByActor( actor, nodeOccupiedByActor ) )
+        {
+            m_Registry.erase( nodeOccupiedByActor.ID );
+            return true;
+        }
+
         return false;
     }
 
@@ -30,7 +44,7 @@ namespace Engine
         {
             if ( pair.second == actor )
             {
-                node = pair.first;
+                node.ID = pair.first;
                 return true;
             }
         }
