@@ -17,3 +17,9 @@ void Player::OnSceneRender( Engine::Renderer* rendererSubsystem )
 void Player::OnSceneShutdown()
 {
 }
+
+void Player::MoveToNode( const Engine::Node& node )
+{
+    Position.X = node.Position.X;
+    Position.Y = node.Position.Y;
+}

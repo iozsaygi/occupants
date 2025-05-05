@@ -10,6 +10,8 @@ public:
     void OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame ) override;
     void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
     void OnSceneShutdown() override;
+
+    void MoveToNode( const Engine::Node& node );
 };
 
 #endif // PLAYER_H
