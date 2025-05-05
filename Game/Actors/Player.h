@@ -11,9 +11,17 @@ enum MovementDirection
     Right
 };
 
+enum ControlScheme
+{
+    WASD,
+    Arrows
+};
+
 class Player final : public Engine::Actor
 {
 public:
+    Player( ControlScheme controlScheme, int spawnNodeID );
+
     void OnSceneStart() override;
     void OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame ) override;
     void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
@@ -25,7 +33,11 @@ public:
 
 private:
     Engine::Grid* m_GridSubsystem = nullptr;
+
+    int m_SpawnNodeID;
     Engine::Node m_OccupiedNode;
+
+    ControlScheme m_ControlScheme;
 };
 
 #endif // PLAYER_H

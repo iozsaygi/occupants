@@ -1,12 +1,18 @@
 #include "Player.h"
 
+Player::Player( const ControlScheme controlScheme, const int spawnNodeID )
+{
+    m_ControlScheme = controlScheme;
+    m_SpawnNodeID = spawnNodeID;
+}
+
 void Player::OnSceneStart()
 {
     auto& engineEntry = Engine::EngineEntry::Singleton();
     m_GridSubsystem = &engineEntry.SubsystemRegistry.GridSubsystem;
 
     Engine::Node spawnNode;
-    if ( m_GridSubsystem->TryGetNodeWithID( 90, spawnNode ) )
+    if ( m_GridSubsystem->TryGetNodeWithID( m_SpawnNodeID, spawnNode ) )
     {
         MoveToNode( spawnNode );
     }
@@ -14,45 +20,48 @@ void Player::OnSceneStart()
 
 void Player::OnSceneUpdate( float deltaTime, const Engine::DispatchableEvent dispatchedEventForCurrentFrame )
 {
-    switch ( dispatchedEventForCurrentFrame )
+    if ( m_ControlScheme == WASD )
     {
-        case Engine::WKeyDown:
+        switch ( dispatchedEventForCurrentFrame )
         {
-            Engine::Node upwardsNode;
-            if ( TryGetMovableNodeBasedOnMovementDirection( Upwards, m_OccupiedNode, upwardsNode ) )
+            case Engine::WKeyDown:
             {
-                MoveToNode( upwardsNode );
+                Engine::Node upwardsNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Upwards, m_OccupiedNode, upwardsNode ) )
+                {
+                    MoveToNode( upwardsNode );
+                }
             }
-        }
-        break;
-        case Engine::AKeyDown:
-        {
-            Engine::Node leftNode;
-            if ( TryGetMovableNodeBasedOnMovementDirection( Left, m_OccupiedNode, leftNode ) )
+            break;
+            case Engine::AKeyDown:
             {
-                MoveToNode( leftNode );
+                Engine::Node leftNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Left, m_OccupiedNode, leftNode ) )
+                {
+                    MoveToNode( leftNode );
+                }
             }
-        }
-        break;
-        case Engine::SKeyDown:
-        {
-            Engine::Node downwardsNode;
-            if ( TryGetMovableNodeBasedOnMovementDirection( Downwards, m_OccupiedNode, downwardsNode ) )
+            break;
+            case Engine::SKeyDown:
             {
-                MoveToNode( downwardsNode );
+                Engine::Node downwardsNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Downwards, m_OccupiedNode, downwardsNode ) )
+                {
+                    MoveToNode( downwardsNode );
+                }
             }
-        }
-        break;
-        case Engine::DKeyDown:
-        {
-            Engine::Node rightNode;
-            if ( TryGetMovableNodeBasedOnMovementDirection( Right, m_OccupiedNode, rightNode ) )
+            break;
+            case Engine::DKeyDown:
             {
-                MoveToNode( rightNode );
+                Engine::Node rightNode;
+                if ( TryGetMovableNodeBasedOnMovementDirection( Right, m_OccupiedNode, rightNode ) )
+                {
+                    MoveToNode( rightNode );
+                }
             }
+            break;
+            default:;
         }
-        break;
-        default:;
     }
 }
 
