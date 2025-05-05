@@ -19,6 +19,14 @@ namespace Engine
                     {
                         case SDLK_ESCAPE:
                             return EngineShutdown;
+                        case SDLK_W:
+                            return WKeyDown;
+                        case SDLK_A:
+                            return AKeyDown;
+                        case SDLK_S:
+                            return SKeyDown;
+                        case SDLK_D:
+                            return DKeyDown;
                         default:;
                     }
                     break;

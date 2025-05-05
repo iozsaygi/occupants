@@ -8,7 +8,13 @@ namespace Engine
         None,
 
         // Events related to core engine loop.
-        EngineShutdown
+        EngineShutdown,
+
+        // Key down events.
+        WKeyDown,
+        AKeyDown,
+        SKeyDown,
+        DKeyDown,
     };
 
     class EventDispatcher final
