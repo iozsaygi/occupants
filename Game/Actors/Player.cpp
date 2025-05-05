@@ -1,9 +1,10 @@
 #include "Player.h"
 
-Player::Player( const ControlScheme controlScheme, const int spawnNodeID )
+Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const Engine::Color associatedColor )
 {
     m_ControlScheme = controlScheme;
     m_SpawnNodeID = spawnNodeID;
+    m_AssociatedColor = associatedColor;
 }
 
 void Player::OnSceneStart()
@@ -110,8 +111,7 @@ void Player::OnSceneUpdate( float deltaTime, const Engine::DispatchableEvent dis
 
 void Player::OnSceneRender( Engine::Renderer* rendererSubsystem )
 {
-    constexpr Engine::Color color = { 0, 0, 255, 0 };
-    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale, color );
+    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale, m_AssociatedColor );
 }
 
 void Player::OnSceneShutdown()

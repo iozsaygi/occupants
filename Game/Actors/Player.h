@@ -20,7 +20,7 @@ enum ControlScheme
 class Player final : public Engine::Actor
 {
 public:
-    Player( ControlScheme controlScheme, int spawnNodeID );
+    Player( ControlScheme controlScheme, int spawnNodeID, Engine::Color associatedColor );
 
     void OnSceneStart() override;
     void OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame ) override;
@@ -38,6 +38,7 @@ private:
     Engine::Node m_OccupiedNode;
 
     ControlScheme m_ControlScheme;
+    Engine::Color m_AssociatedColor;
 };
 
 #endif // PLAYER_H

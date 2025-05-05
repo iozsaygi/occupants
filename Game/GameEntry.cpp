@@ -14,8 +14,11 @@ int main( int argc, char* argv[] )
     engineEntry.SubsystemRegistry.WorldSubsystem.AttachScene( scene );
     engineEntry.SubsystemRegistry.GridSubsystem.Create( 10, 10 );
 
-    const auto firstPlayer = new Player( WASD, 90 );
-    const auto secondPlayer = new Player( Arrows, 9 );
+    constexpr Engine::Color blue = { 0, 0, 255, 255 };
+    constexpr Engine::Color red = { 255, 0, 0, 255 };
+
+    const auto firstPlayer = new Player( WASD, 90, blue );
+    const auto secondPlayer = new Player( Arrows, 9, red );
 
     if ( !scene->ActiveSceneGraph->TryRegisterActor( firstPlayer ) )
     {
