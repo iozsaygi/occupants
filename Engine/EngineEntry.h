@@ -15,6 +15,7 @@ namespace Engine
     class ENGINE_API EngineEntry
     {
     public:
+        // ReSharper disable once CppDFANotInitializedField
         EngineSubsystemRegistry SubsystemRegistry;
 
         static EngineEntry& Singleton()
