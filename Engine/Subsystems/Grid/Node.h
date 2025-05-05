@@ -1,6 +1,9 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <cstddef>
+
+
 #include "Mathematics/Vector2D.h"
 
 #define INVALID_NODE_ID ( -1 )
@@ -27,7 +30,21 @@ namespace Engine
 
         Node();
         bool operator()( const Node& first, const Node& second ) const;
+        bool operator==( const Node& node ) const;
+        bool operator!=( const Node& node ) const;
     };
 } // namespace Engine
+
+namespace std
+{
+    template<>
+    struct hash<Engine::Node>
+    {
+        std::size_t operator()( const Engine::Node& node ) const
+        {
+            return std::hash<int>()(node.ID)  << 1;
+        }
+    };
+} // namespace std
 
 #endif // NODE_H

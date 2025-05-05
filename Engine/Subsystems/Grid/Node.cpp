@@ -15,4 +15,14 @@ namespace Engine
         return first.ID == second.ID;
     }
 
+    bool Node::operator==( const Node& node ) const
+    {
+        return ID == node.ID;
+    }
+
+    bool Node::operator!=( const Node& node ) const
+    {
+        return ID != node.ID;
+    }
+
 } // namespace Engine
