@@ -27,6 +27,14 @@ namespace Engine
                             return SKeyDown;
                         case SDLK_D:
                             return DKeyDown;
+                        case SDLK_UP:
+                            return UpKeyDown;
+                        case SDLK_LEFT:
+                            return LeftKeyDown;
+                        case SDLK_DOWN:
+                            return DownKeyDown;
+                        case SDLK_RIGHT:
+                            return RightKeyDown;
                         default:;
                     }
                     break;

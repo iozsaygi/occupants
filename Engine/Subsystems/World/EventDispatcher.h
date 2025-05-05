@@ -15,6 +15,10 @@ namespace Engine
         AKeyDown,
         SKeyDown,
         DKeyDown,
+        UpKeyDown,
+        LeftKeyDown,
+        DownKeyDown,
+        RightKeyDown,
     };
 
     class EventDispatcher final
