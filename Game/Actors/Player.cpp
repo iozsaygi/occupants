@@ -26,6 +26,44 @@ void Player::OnSceneShutdown()
 {
 }
 
+bool Player::TryGetMovableNodeBasedOnMovementDirection( const MovementDirection movementDirection,
+                                                        const Engine::Node& origin, Engine::Node& node ) const
+{
+    switch ( movementDirection )
+    {
+        case Upwards:
+            if ( origin.Neighbors[ 0 ] != INVALID_NODE_ID )
+            {
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 0 ], node );
+                return true;
+            }
+            break;
+        case Downwards:
+            if ( origin.Neighbors[ 2 ] != INVALID_NODE_ID )
+            {
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 2 ], node );
+                return true;
+            }
+            break;
+        case Left:
+            if ( origin.Neighbors[ 3 ] != INVALID_NODE_ID )
+            {
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 3 ], node );
+                return true;
+            }
+            break;
+        case Right:
+            if ( origin.Neighbors[ 1 ] != INVALID_NODE_ID )
+            {
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 1 ], node );
+                return true;
+            }
+            break;
+    }
+
+    return false;
+}
+
 void Player::MoveToNode( Engine::Node& node )
 {
     // First try to remove existing storage.

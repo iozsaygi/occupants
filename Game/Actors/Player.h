@@ -3,6 +3,14 @@
 
 #include "Engine.h"
 
+enum MovementDirection
+{
+    Upwards,
+    Downwards,
+    Left,
+    Right
+};
+
 class Player final : public Engine::Actor
 {
 public:
@@ -11,6 +19,8 @@ public:
     void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
     void OnSceneShutdown() override;
 
+    bool TryGetMovableNodeBasedOnMovementDirection( MovementDirection movementDirection, const Engine::Node& origin,
+                                                    Engine::Node& node ) const;
     void MoveToNode( Engine::Node& node );
 
 private:
