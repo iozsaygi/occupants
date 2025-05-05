@@ -34,29 +34,25 @@ bool Player::TryGetMovableNodeBasedOnMovementDirection( const MovementDirection 
         case Upwards:
             if ( origin.Neighbors[ 0 ] != INVALID_NODE_ID )
             {
-                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 0 ], node );
-                return true;
+                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 0 ], node );
             }
             break;
         case Downwards:
             if ( origin.Neighbors[ 2 ] != INVALID_NODE_ID )
             {
-                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 2 ], node );
-                return true;
+                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 2 ], node );
             }
             break;
         case Left:
             if ( origin.Neighbors[ 3 ] != INVALID_NODE_ID )
             {
-                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 3 ], node );
-                return true;
+                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 3 ], node );
             }
             break;
         case Right:
             if ( origin.Neighbors[ 1 ] != INVALID_NODE_ID )
             {
-                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 1 ], node );
-                return true;
+                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 1 ], node );
             }
             break;
     }
