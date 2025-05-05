@@ -74,5 +74,6 @@ void Player::MoveToNode( Engine::Node& node )
     {
         Position.X = node.Position.X;
         Position.Y = node.Position.Y;
+        m_OccupiedNode = node;
     }
 }

@@ -25,6 +25,7 @@ public:
 
 private:
     Engine::Grid* m_GridSubsystem = nullptr;
+    Engine::Node m_OccupiedNode;
 };
 
 #endif // PLAYER_H
