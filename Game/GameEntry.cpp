@@ -3,7 +3,7 @@
 
 int main( int argc, char* argv[] )
 {
-    Engine::EngineEntry engineEntry;
+    auto& engineEntry = Engine::EngineEntry::Singleton();
     if ( engineEntry.TryInitializingSubsystems() == Engine::Unstable ) return -1;
 
     // Let the world know about subsystems. (This step probably needs reconsideration in terms of meaningful API usage)
@@ -12,7 +12,6 @@ int main( int argc, char* argv[] )
     const auto scene = new Engine::Scene();
 
     engineEntry.SubsystemRegistry.WorldSubsystem.AttachScene( scene );
-
     engineEntry.SubsystemRegistry.GridSubsystem.Create( 10, 10 );
 
     const auto player = new Player();

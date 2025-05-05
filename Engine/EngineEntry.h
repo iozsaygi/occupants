@@ -17,8 +17,24 @@ namespace Engine
     public:
         EngineSubsystemRegistry SubsystemRegistry;
 
+        static EngineEntry& Singleton()
+        {
+            static EngineEntry Singleton;
+            return Singleton;
+        }
+
         EngineEntryStabilityState TryInitializingSubsystems();
         void ShutdownSubsystems();
+
+        EngineEntry( const EngineEntry& ) = delete;
+        EngineEntry& operator=( const EngineEntry& ) = delete;
+        EngineEntry( EngineEntry&& ) = delete;
+        EngineEntry& operator=( EngineEntry&& ) = delete;
+
+    private:
+        EngineEntry() = default;
+
+        static EngineEntry* s_Singleton;
     };
 } // namespace Engine
 
