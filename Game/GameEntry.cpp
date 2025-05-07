@@ -1,5 +1,6 @@
 #include "Actors/OccupationManager.h"
 #include "Actors/Player.h"
+#include "Actors/TurnManager.h"
 #include "Engine.h"
 
 int main( int argc, char* argv[] )
@@ -21,6 +22,7 @@ int main( int argc, char* argv[] )
     const auto occupationManager = new OccupationManager();
     const auto firstPlayer = new Player( WASD, 90, blue, occupationManager );
     const auto secondPlayer = new Player( Arrows, 9, red, occupationManager );
+    const auto turnManager = new TurnManager( firstPlayer, secondPlayer );
 
     firstPlayer->Name = "Player 1";
     secondPlayer->Name = "Player 2";
@@ -44,6 +46,12 @@ int main( int argc, char* argv[] )
             "Failed to register 'Occupation Manager' actor to the attached scene!" );
     }
 
+    if ( !scene->ActiveSceneGraph->TryRegisterActor( turnManager ) )
+    {
+        engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
+            "Failed to register 'Turn Manager' actor to the attached scene!" );
+    }
+
     engineEntry.SubsystemRegistry.WorldSubsystem.RunAttachedScene();
 
     // Shutdown the subsystems, clean up resources.
@@ -53,6 +61,7 @@ int main( int argc, char* argv[] )
     delete firstPlayer;
     delete secondPlayer;
     delete occupationManager;
+    delete turnManager;
     delete scene;
 
     return 0;
