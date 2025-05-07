@@ -42,6 +42,19 @@ bool OccupationManager::TryGetOccupationDataWithNodeID( const int nodeID, Occupa
     return false;
 }
 
+int OccupationManager::GetNumberOfOccupationsForPlayer( const Player* player ) const
+{
+    assert( player != nullptr );
+
+    int count = 0;
+    for ( auto& occupationData: m_OccupationRegistry )
+    {
+        if ( occupationData.Owner == player ) count++;
+    }
+
+    return count;
+}
+
 void OccupationManager::OccupyNode( const int nodeID, Player* player )
 {
     assert( nodeID >= 0 );

@@ -20,6 +20,7 @@ public:
     void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
 
     bool TryGetOccupationDataWithNodeID( int nodeID, OccupationData& occupationData ) const;
+    int GetNumberOfOccupationsForPlayer( const Player* player ) const;
 
     void OccupyNode( int nodeID, Player* player );
     void RemoveOccupation( int nodeID );

@@ -15,6 +15,7 @@ void Player::OnSceneStart()
 {
     auto& engineEntry = Engine::EngineEntry::Singleton();
     m_GridSubsystem = &engineEntry.SubsystemRegistry.GridSubsystem;
+    m_DebuggerSubsystem = &engineEntry.SubsystemRegistry.DebuggerSubsystem;
 
     Engine::Node spawnNode;
     if ( m_GridSubsystem->TryGetNodeWithID( m_SpawnNodeID, spawnNode ) )
@@ -176,7 +177,12 @@ void Player::MoveToNode( Engine::Node& node )
                 m_OccupationManager->RemoveOccupation( node.ID );
             }
         }
+        else
+        {
+            m_OccupationManager->OccupyNode( node.ID, this );
 
-        m_OccupationManager->OccupyNode( node.ID, this );
+            m_DebuggerSubsystem->Trace( "Current score for player is %d",
+                                        m_OccupationManager->GetNumberOfOccupationsForPlayer( this ) );
+        }
     }
 }

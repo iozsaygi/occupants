@@ -38,6 +38,7 @@ public:
 
 private:
     Engine::Grid* m_GridSubsystem = nullptr;
+    Engine::Debugger* m_DebuggerSubsystem = nullptr;
     OccupationManager* m_OccupationManager;
 
     int m_SpawnNodeID;
