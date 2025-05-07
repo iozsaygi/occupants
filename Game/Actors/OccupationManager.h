@@ -16,13 +16,13 @@ class OccupationManager final : public Engine::Actor
 public:
     OccupationManager();
 
+    void OnSceneStart() override;
+    void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
+
     bool TryGetOccupationDataWithNodeID( int nodeID, OccupationData& occupationData ) const;
 
     void OccupyNode( int nodeID, Player* player );
     void RemoveOccupation( int nodeID );
-
-    void OnSceneStart() override;
-    void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
 
 private:
     Engine::Grid* m_GridSubsystem = nullptr;

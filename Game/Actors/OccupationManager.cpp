@@ -6,6 +6,26 @@ OccupationManager::OccupationManager()
     m_OccupationRegistry = std::vector<OccupationData>();
 }
 
+void OccupationManager::OnSceneStart()
+{
+    auto& engineEntry = Engine::EngineEntry::Singleton();
+    m_GridSubsystem = &engineEntry.SubsystemRegistry.GridSubsystem;
+}
+
+void OccupationManager::OnSceneRender( Engine::Renderer* rendererSubsystem )
+{
+    for ( const auto& occupationData: m_OccupationRegistry )
+    {
+        Engine::Node occupationNode;
+        if ( !m_GridSubsystem->TryGetNodeWithID( occupationData.NodeID, occupationNode ) ) continue;
+
+        const Engine::Vector2D scale( 16.0f, 16.0f );
+
+        rendererSubsystem->RenderDebugRectangleAtPosition( occupationNode.Position, scale,
+                                                           occupationData.Owner->AssociatedColor );
+    }
+}
+
 bool OccupationManager::TryGetOccupationDataWithNodeID( const int nodeID, OccupationData& occupationData ) const
 {
     assert( nodeID >= 0 );
@@ -43,24 +63,4 @@ void OccupationManager::RemoveOccupation( const int nodeID )
                                                 [ nodeID ]( const OccupationData& data )
                                                 { return data.NodeID == nodeID; } ),
                                 m_OccupationRegistry.end() );
-}
-
-void OccupationManager::OnSceneStart()
-{
-    auto& engineEntry = Engine::EngineEntry::Singleton();
-    m_GridSubsystem = &engineEntry.SubsystemRegistry.GridSubsystem;
-}
-
-void OccupationManager::OnSceneRender( Engine::Renderer* rendererSubsystem )
-{
-    for ( const auto& occupationData: m_OccupationRegistry )
-    {
-        Engine::Node occupationNode;
-        if ( !m_GridSubsystem->TryGetNodeWithID( occupationData.NodeID, occupationNode ) ) continue;
-
-        const Engine::Vector2D scale( 16.0f, 16.0f );
-
-        rendererSubsystem->RenderDebugRectangleAtPosition( occupationNode.Position, scale,
-                                                           occupationData.Owner->AssociatedColor );
-    }
 }
