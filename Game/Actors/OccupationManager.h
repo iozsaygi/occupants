@@ -21,7 +21,11 @@ public:
     void OccupyNode( int nodeID, Player* player );
     void RemoveOccupation( int nodeID );
 
+    void OnSceneStart() override;
+    void OnSceneRender( Engine::Renderer* rendererSubsystem ) override;
+
 private:
+    Engine::Grid* m_GridSubsystem = nullptr;
     std::vector<OccupationData> m_OccupationRegistry;
 };
 

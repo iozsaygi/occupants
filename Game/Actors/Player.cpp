@@ -4,7 +4,7 @@ Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const 
 {
     m_ControlScheme = controlScheme;
     m_SpawnNodeID = spawnNodeID;
-    m_AssociatedColor = associatedColor;
+    AssociatedColor = associatedColor;
 }
 
 void Player::OnSceneStart()
@@ -111,7 +111,7 @@ void Player::OnSceneUpdate( float deltaTime, const Engine::DispatchableEvent dis
 
 void Player::OnSceneRender( Engine::Renderer* rendererSubsystem )
 {
-    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale, m_AssociatedColor );
+    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale, AssociatedColor );
 }
 
 void Player::OnSceneShutdown()
