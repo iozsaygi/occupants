@@ -168,6 +168,15 @@ void Player::MoveToNode( Engine::Node& node )
         Position.Y = node.Position.Y;
         m_OccupiedNode = node;
 
+        OccupationData occupationDataOnNode {};
+        if ( m_OccupationManager->TryGetOccupationDataWithNodeID( node.ID, occupationDataOnNode ) )
+        {
+            if ( occupationDataOnNode.Owner != this )
+            {
+                m_OccupationManager->RemoveOccupation( node.ID );
+            }
+        }
+
         m_OccupationManager->OccupyNode( node.ID, this );
     }
 }
