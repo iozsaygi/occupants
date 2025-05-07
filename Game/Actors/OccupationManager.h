@@ -2,18 +2,22 @@
 #define OCCUPATION_MANAGER_H
 
 #include <vector>
+#include "Player.h"
 #include "Subsystems/World/Actor.h"
+
+struct OccupationData
+{
+    Player* Owner;
+    int NodeID;
+};
 
 class OccupationManager final : public Engine::Actor
 {
 public:
     OccupationManager();
 
-    bool IsNodeAlreadyOccupied( int nodeID ) const;
-    void OccupyNode( int nodeID );
-
 private:
-    std::vector<int> m_OccupiedNodeIDs;
+    std::vector<OccupationData> m_OccupationRegistry;
 };
 
 #endif // OCCUPATION_MANAGER_H
