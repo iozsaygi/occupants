@@ -168,6 +168,9 @@ bool Player::TryGetMovableNodeBasedOnMovementDirection( const MovementDirection 
 
 void Player::MoveToNode( Engine::Node& node )
 {
+    // Do not try to move if this is not our turn.
+    if ( !m_TurnManager->CanPlayerMove( this ) ) return;
+
     // First try to remove existing storage.
     m_GridSubsystem->ActorRegistry->TryRemoveActor( this );
 
