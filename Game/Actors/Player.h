@@ -17,12 +17,15 @@ enum ControlScheme
     Arrows
 };
 
+class OccupationManager;
+
 class Player final : public Engine::Actor
 {
 public:
     Engine::Color AssociatedColor;
 
-    Player( ControlScheme controlScheme, int spawnNodeID, Engine::Color associatedColor );
+    Player( ControlScheme controlScheme, int spawnNodeID, Engine::Color associatedColor,
+            OccupationManager* occupationManager );
 
     void OnSceneStart() override;
     void OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame ) override;
@@ -35,6 +38,7 @@ public:
 
 private:
     Engine::Grid* m_GridSubsystem = nullptr;
+    OccupationManager* m_OccupationManager;
 
     int m_SpawnNodeID;
     Engine::Node m_OccupiedNode;

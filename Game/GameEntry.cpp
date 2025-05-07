@@ -18,9 +18,9 @@ int main( int argc, char* argv[] )
     constexpr Engine::Color blue = { 0, 0, 255, 255 };
     constexpr Engine::Color red = { 255, 0, 0, 255 };
 
-    const auto firstPlayer = new Player( WASD, 90, blue );
-    const auto secondPlayer = new Player( Arrows, 9, red );
     const auto occupationManager = new OccupationManager();
+    const auto firstPlayer = new Player( WASD, 90, blue, occupationManager );
+    const auto secondPlayer = new Player( Arrows, 9, red, occupationManager );
 
     if ( !scene->ActiveSceneGraph->TryRegisterActor( firstPlayer ) )
     {
@@ -48,6 +48,7 @@ int main( int argc, char* argv[] )
     // Pointer clean up.
     delete firstPlayer;
     delete secondPlayer;
+    delete occupationManager;
     delete scene;
 
     return 0;

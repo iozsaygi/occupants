@@ -1,10 +1,14 @@
 #include "Player.h"
 
-Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const Engine::Color associatedColor )
+#include "OccupationManager.h"
+
+Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const Engine::Color associatedColor,
+                OccupationManager* occupationManager )
 {
     m_ControlScheme = controlScheme;
     m_SpawnNodeID = spawnNodeID;
     AssociatedColor = associatedColor;
+    m_OccupationManager = occupationManager;
 }
 
 void Player::OnSceneStart()
@@ -163,5 +167,7 @@ void Player::MoveToNode( Engine::Node& node )
         Position.X = node.Position.X;
         Position.Y = node.Position.Y;
         m_OccupiedNode = node;
+
+        m_OccupationManager->OccupyNode( node.ID, this );
     }
 }
