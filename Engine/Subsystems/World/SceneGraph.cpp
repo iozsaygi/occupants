@@ -38,6 +38,22 @@ namespace Engine
         return true;
     }
 
+    bool SceneGraph::TryGetActorByName( const std::string& name, Actor*& actor ) const // NOLINT(*-convert-member-functions-to-static)
+    {
+        assert( !name.empty() );
+
+        for ( Actor* actorWithinRegistry: m_Actors )
+        {
+            if ( actorWithinRegistry->Name == name )
+            {
+                actor = actorWithinRegistry;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     bool SceneGraph::TryFindFirstAvailableSceneGraphIndex( int& index ) const
     {
         for ( int i = 0; i < Capacity; i++ )

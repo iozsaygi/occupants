@@ -17,6 +17,7 @@ namespace Engine
 
         bool TryRegisterActor( Actor* actor );
         bool TryGetActorBySceneGraphIndex( int index, Actor*& actor ) const;
+        bool TryGetActorByName( const std::string& name, Actor*& actor ) const;
 
     private:
         Actor** m_Actors = nullptr;
