@@ -20,7 +20,7 @@ this repository won't have to deal with dependency management:
 
 - `git clone https://github.com/iozsaygi/occupants.git`
 - `brew install cmake`
-- `chmod +x .build.sh`
+- `chmod +x build.sh`
 - `./build.sh`
 
 ## License
