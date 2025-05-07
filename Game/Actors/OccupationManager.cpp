@@ -1,12 +1,12 @@
-#include "OccupationController.h"
+#include "OccupationManager.h"
 #include <cassert>
 
-OccupationController::OccupationController()
+OccupationManager::OccupationManager()
 {
     m_OccupiedNodeIDs = std::vector<int>();
 }
 
-bool OccupationController::IsNodeAlreadyOccupied( const int nodeID ) const
+bool OccupationManager::IsNodeAlreadyOccupied( const int nodeID ) const
 {
     assert( nodeID >= 0 );
 
@@ -19,7 +19,7 @@ bool OccupationController::IsNodeAlreadyOccupied( const int nodeID ) const
     return false;
 }
 
-void OccupationController::OccupyNode( const int nodeID )
+void OccupationManager::OccupyNode( const int nodeID )
 {
     assert( nodeID >= 0 );
 
