@@ -1,3 +1,4 @@
+#include "Actors/OccupationManager.h"
 #include "Actors/Player.h"
 #include "Engine.h"
 
@@ -19,6 +20,7 @@ int main( int argc, char* argv[] )
 
     const auto firstPlayer = new Player( WASD, 90, blue );
     const auto secondPlayer = new Player( Arrows, 9, red );
+    const auto occupationManager = new OccupationManager();
 
     if ( !scene->ActiveSceneGraph->TryRegisterActor( firstPlayer ) )
     {
@@ -30,6 +32,12 @@ int main( int argc, char* argv[] )
     {
         engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
             "Failed to register 'Second Player' actor to the attached scene!" );
+    }
+
+    if ( !scene->ActiveSceneGraph->TryRegisterActor( occupationManager ) )
+    {
+        engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
+            "Failed to register 'Occupation Manager' actor to the attached scene!" );
     }
 
     engineEntry.SubsystemRegistry.WorldSubsystem.RunAttachedScene();
