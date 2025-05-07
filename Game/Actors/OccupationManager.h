@@ -16,6 +16,11 @@ class OccupationManager final : public Engine::Actor
 public:
     OccupationManager();
 
+    bool TryGetOccupationDataWithNodeID( int nodeID, OccupationData& occupationData ) const;
+
+    void OccupyNode( int nodeID, Player* player );
+    void RemoveOccupation( int nodeID );
+
 private:
     std::vector<OccupationData> m_OccupationRegistry;
 };
