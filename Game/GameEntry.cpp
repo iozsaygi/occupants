@@ -22,6 +22,10 @@ int main( int argc, char* argv[] )
     const auto firstPlayer = new Player( WASD, 90, blue, occupationManager );
     const auto secondPlayer = new Player( Arrows, 9, red, occupationManager );
 
+    firstPlayer->Name = "Player 1";
+    secondPlayer->Name = "Player 2";
+    occupationManager->Name = "Occupation Manager";
+
     if ( !scene->ActiveSceneGraph->TryRegisterActor( firstPlayer ) )
     {
         engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(

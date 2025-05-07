@@ -1,6 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+#include <string>
 #include "EventDispatcher.h"
 #include "Mathematics/Vector2D.h"
 #include "Subsystems/Renderer/Renderer.h"
@@ -14,6 +15,7 @@ namespace Engine
     class Actor
     {
     public:
+        std::string Name;
         Vector2D Position;
         Vector2D Scale;
 
