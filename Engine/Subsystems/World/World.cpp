@@ -25,28 +25,28 @@ namespace Engine
         assert( scene != nullptr );
 
         // Shutdown the active scene before attaching new one.
-        if ( m_AttachedScene != nullptr ) m_AttachedScene->Shutdown();
+        if ( AttachedScene != nullptr ) AttachedScene->Shutdown();
 
-        m_AttachedScene = scene;
+        AttachedScene = scene;
     }
 
     void World::RunAttachedScene() const
     {
-        assert( m_AttachedScene != nullptr );
+        assert( AttachedScene != nullptr );
 
         m_AttachedEngineSubsystemRegistry->DebuggerSubsystem.Trace(
             "Starting to run update loop for attached scene. There are %d actors registered to the scene.",
-            m_AttachedScene->ActiveSceneGraph->Count );
+            AttachedScene->ActiveSceneGraph->Count );
 
-        m_AttachedScene->IsActive = true;
-        m_AttachedScene->Start();
+        AttachedScene->IsActive = true;
+        AttachedScene->Start();
 
         auto lastRegisteredTime = std::chrono::high_resolution_clock::now();
 
         // Targeting 30 frames per second, maybe make this somehow adjustable by game.
         constexpr float targetFrameTime = 1.0f / 30.0f;
 
-        while ( m_AttachedScene->IsActive )
+        while ( AttachedScene->IsActive )
         {
             auto currentTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<float> elapsedTime = currentTime - lastRegisteredTime;
@@ -64,12 +64,12 @@ namespace Engine
                 lastRegisteredTime = currentTime;
             }
 
-            m_AttachedScene->Update( deltaTime );
-            m_AttachedScene->Render( &m_AttachedEngineSubsystemRegistry->RendererSubsystem,
-                                     &m_AttachedEngineSubsystemRegistry->GridSubsystem );
+            AttachedScene->Update( deltaTime );
+            AttachedScene->Render( &m_AttachedEngineSubsystemRegistry->RendererSubsystem,
+                                   &m_AttachedEngineSubsystemRegistry->GridSubsystem );
         }
 
-        m_AttachedScene->Shutdown();
+        AttachedScene->Shutdown();
 
         m_AttachedEngineSubsystemRegistry->DebuggerSubsystem.Trace(
             "Finished running update loop of attached scene and cleaned up scene resources." );

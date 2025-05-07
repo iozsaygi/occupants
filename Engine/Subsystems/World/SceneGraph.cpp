@@ -38,7 +38,8 @@ namespace Engine
         return true;
     }
 
-    bool SceneGraph::TryGetActorByName( const std::string& name, Actor*& actor ) const // NOLINT(*-convert-member-functions-to-static)
+    bool SceneGraph::TryGetActorByName( const std::string& name,
+                                        Actor*& actor ) const // NOLINT(*-convert-member-functions-to-static)
     {
         assert( !name.empty() );
 

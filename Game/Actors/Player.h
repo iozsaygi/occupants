@@ -18,6 +18,7 @@ enum ControlScheme
 };
 
 class OccupationManager;
+class TurnManager;
 
 class Player final : public Engine::Actor
 {
@@ -40,6 +41,7 @@ private:
     Engine::Grid* m_GridSubsystem = nullptr;
     Engine::Debugger* m_DebuggerSubsystem = nullptr;
     OccupationManager* m_OccupationManager;
+    TurnManager* m_TurnManager;
 
     int m_SpawnNodeID;
     Engine::Node m_OccupiedNode;

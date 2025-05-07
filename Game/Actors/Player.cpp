@@ -1,6 +1,7 @@
 #include "Player.h"
 
 #include "OccupationManager.h"
+#include "TurnManager.h"
 
 Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const Engine::Color associatedColor,
                 OccupationManager* occupationManager )
@@ -16,6 +17,14 @@ void Player::OnSceneStart()
     auto& engineEntry = Engine::EngineEntry::Singleton();
     m_GridSubsystem = &engineEntry.SubsystemRegistry.GridSubsystem;
     m_DebuggerSubsystem = &engineEntry.SubsystemRegistry.DebuggerSubsystem;
+
+    Actor* turnManager = nullptr;
+
+    if ( engineEntry.SubsystemRegistry.WorldSubsystem.AttachedScene->ActiveSceneGraph->TryGetActorByName(
+             "Turn Manager", turnManager ) )
+    {
+        m_TurnManager = dynamic_cast<TurnManager*>( turnManager );
+    }
 
     Engine::Node spawnNode;
     if ( m_GridSubsystem->TryGetNodeWithID( m_SpawnNodeID, spawnNode ) )
@@ -184,5 +193,7 @@ void Player::MoveToNode( Engine::Node& node )
             m_DebuggerSubsystem->Trace( "Current score for %s is %d", Name.c_str(),
                                         m_OccupationManager->GetNumberOfOccupationsForPlayer( this ) );
         }
+
+        m_TurnManager->UpdateTurnStateAfterPlayer( this );
     }
 }

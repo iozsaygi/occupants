@@ -27,6 +27,7 @@ int main( int argc, char* argv[] )
     firstPlayer->Name = "Player 1";
     secondPlayer->Name = "Player 2";
     occupationManager->Name = "Occupation Manager";
+    turnManager->Name = "Turn Manager";
 
     if ( !scene->ActiveSceneGraph->TryRegisterActor( firstPlayer ) )
     {
