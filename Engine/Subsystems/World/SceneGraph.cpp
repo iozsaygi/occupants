@@ -43,11 +43,11 @@ namespace Engine
     {
         assert( !name.empty() );
 
-        for ( Actor* actorWithinRegistry: m_Actors )
+        for ( int i = 0; i < Capacity; i++ )
         {
-            if ( actorWithinRegistry->Name == name )
+            if ( m_Actors[ i ]->Name == name )
             {
-                actor = actorWithinRegistry;
+                actor = m_Actors[ i ];
                 return true;
             }
         }
