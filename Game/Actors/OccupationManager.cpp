@@ -77,3 +77,8 @@ void OccupationManager::RemoveOccupation( const int nodeID )
                                                 { return data.NodeID == nodeID; } ),
                                 m_OccupationRegistry.end() );
 }
+
+void OccupationManager::ResetCurrentOccupations()
+{
+    m_OccupationRegistry.clear();
+}

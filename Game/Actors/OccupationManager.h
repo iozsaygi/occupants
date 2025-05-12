@@ -24,6 +24,7 @@ public:
 
     void OccupyNode( int nodeID, Player* player );
     void RemoveOccupation( int nodeID );
+    void ResetCurrentOccupations();
 
 private:
     Engine::Grid* m_GridSubsystem = nullptr;
