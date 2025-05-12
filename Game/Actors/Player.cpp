@@ -189,13 +189,11 @@ void Player::MoveToNode( Engine::Node& node )
                 m_OccupationManager->RemoveOccupation( node.ID );
             }
         }
-        else
-        {
-            m_OccupationManager->OccupyNode( node.ID, this );
 
-            m_DebuggerSubsystem->Trace( "Current score for %s is %d", Name.c_str(),
-                                        m_OccupationManager->GetNumberOfOccupationsForPlayer( this ) );
-        }
+        m_OccupationManager->OccupyNode( node.ID, this );
+
+        m_DebuggerSubsystem->Trace( "Current score for %s is %d", Name.c_str(),
+                                    m_OccupationManager->GetNumberOfOccupationsForPlayer( this ) );
 
         m_TurnManager->UpdateTurnStateAfterPlayer( this );
     }
