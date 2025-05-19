@@ -5,6 +5,10 @@ generated grid map to win.
 
 Currently, the development is focused on macOS, but Windows will also be supported at some point.
 
+## Changelog
+
+- `v0.1 (May 19, 2025)` Gameplay mechanics are finished, and the game needs a decent polish at this point.
+
 ## Dependencies
 
 The following dependencies are automatically downloaded, extracted, and linked to builds, which means the end user of
