@@ -23,6 +23,7 @@ class TurnManager;
 class Player final : public Engine::Actor
 {
 public:
+    int SpawnNodeID;
     Engine::Color AssociatedColor;
 
     Player( ControlScheme controlScheme, int spawnNodeID, Engine::Color associatedColor,
@@ -44,7 +45,6 @@ private:
     OccupationManager* m_OccupationManager;
     TurnManager* m_TurnManager;
 
-    int m_SpawnNodeID;
     Engine::Node m_OccupiedNode;
 
     ControlScheme m_ControlScheme;

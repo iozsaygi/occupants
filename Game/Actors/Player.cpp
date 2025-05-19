@@ -7,7 +7,7 @@ Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const 
                 OccupationManager* occupationManager )
 {
     m_ControlScheme = controlScheme;
-    m_SpawnNodeID = spawnNodeID;
+    SpawnNodeID = spawnNodeID;
     AssociatedColor = associatedColor;
     m_OccupationManager = occupationManager;
 }
@@ -27,7 +27,7 @@ void Player::OnSceneStart()
     }
 
     Engine::Node spawnNode;
-    if ( m_GridSubsystem->TryGetNodeWithID( m_SpawnNodeID, spawnNode ) )
+    if ( m_GridSubsystem->TryGetNodeWithID( SpawnNodeID, spawnNode ) )
     {
         MoveToNode( spawnNode );
     }
@@ -211,6 +211,28 @@ void Player::MoveToNode( Engine::Node& node )
 
             occupationManager->ResetCurrentOccupations();
             m_DebuggerSubsystem->Trace( "Reset current occupations, preparing for new match" );
+
+            Actor* playerOneCache = nullptr;
+            Actor* playerTwoCache = nullptr;
+
+            if ( engineEntry.SubsystemRegistry.WorldSubsystem.AttachedScene->ActiveSceneGraph->TryGetActorByName(
+                     "Player 1", playerOneCache ) &&
+                 engineEntry.SubsystemRegistry.WorldSubsystem.AttachedScene->ActiveSceneGraph->TryGetActorByName(
+                     "Player 2", playerTwoCache ) )
+            {
+                const auto playerOne = dynamic_cast<Player*>( playerOneCache );
+                const auto playerTwo = dynamic_cast<Player*>( playerTwoCache );
+                Engine::Node playerOneSpawnNode;
+                Engine::Node playerTwoSpawnNode;
+
+                engineEntry.SubsystemRegistry.GridSubsystem.TryGetNodeWithID( playerOne->SpawnNodeID,
+                                                                              playerOneSpawnNode );
+                engineEntry.SubsystemRegistry.GridSubsystem.TryGetNodeWithID( playerTwo->SpawnNodeID,
+                                                                              playerTwoSpawnNode );
+
+                playerOne->MoveToNodeWithoutConstraints( playerOneSpawnNode );
+                playerTwo->MoveToNodeWithoutConstraints( playerTwoSpawnNode );
+            }
         }
     }
 }
