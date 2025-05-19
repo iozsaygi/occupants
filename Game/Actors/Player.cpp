@@ -248,5 +248,10 @@ void Player::MoveToNodeWithoutConstraints( Engine::Node& node )
         Position.X = node.Position.X;
         Position.Y = node.Position.Y;
         m_OccupiedNode = node;
+
+        m_OccupationManager->OccupyNode( node.ID, this );
+
+        m_DebuggerSubsystem->Trace( "Current score for %s is %d", Name.c_str(),
+                                    m_OccupationManager->GetNumberOfOccupationsForPlayer( this ) );
     }
 }
