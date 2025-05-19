@@ -7,7 +7,8 @@ Currently, the development is focused on macOS, but Windows will also be support
 
 ## Changelog
 
-- `v0.1 (May 19, 2025)` Gameplay mechanics are finished, and the game needs a decent polish at this point.
+- v0.1 (May 19, 2025)
+    - Gameplay mechanics are finished, and the game needs a decent polish at this point.
 
 ## Dependencies
 
