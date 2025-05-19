@@ -14,6 +14,7 @@ namespace Engine
 
         bool TryRegisterActor( Node& node, Actor* actor );
         bool TryRemoveActor( const Actor* actor );
+        bool TryGetActorFromNode( const Node& node, const Actor* actor );
         bool TryGetNodeOccupiedByActor( const Actor* actor, Node& node ) const;
 
     private:

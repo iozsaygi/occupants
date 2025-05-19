@@ -38,6 +38,17 @@ namespace Engine
         return false;
     }
 
+    bool GridActorRegistry::TryGetActorFromNode( const Node& node, const Actor* actor )
+    {
+        assert( actor != nullptr );
+
+        const auto lookupQuery = m_Registry.find( node.ID );
+        if ( lookupQuery == m_Registry.end() ) return false;
+
+        actor = lookupQuery->second;
+        return true;
+    }
+
     bool GridActorRegistry::TryGetNodeOccupiedByActor( const Actor* actor, Node& node ) const
     {
         for ( const auto pair: m_Registry )
