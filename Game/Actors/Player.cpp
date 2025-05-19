@@ -190,10 +190,13 @@ void Player::MoveToNode( Engine::Node& node )
             }
         }
 
-        m_OccupationManager->OccupyNode( node.ID, this );
+        if ( occupationDataOnNode.Owner != this )
+        {
+            m_OccupationManager->OccupyNode( node.ID, this );
 
-        m_DebuggerSubsystem->Trace( "Current score for %s is %d", Name.c_str(),
-                                    m_OccupationManager->GetNumberOfOccupationsForPlayer( this ) );
+            m_DebuggerSubsystem->Trace( "Current score for %s is %d", Name.c_str(),
+                                        m_OccupationManager->GetNumberOfOccupationsForPlayer( this ) );
+        }
 
         m_TurnManager->UpdateTurnStateAfterPlayer( this );
     }
