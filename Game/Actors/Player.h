@@ -36,6 +36,7 @@ public:
     bool TryGetMovableNodeBasedOnMovementDirection( MovementDirection movementDirection, const Engine::Node& origin,
                                                     Engine::Node& node ) const;
     void MoveToNode( Engine::Node& node );
+    void MoveToNodeWithoutConstraints( Engine::Node& node );
 
 private:
     Engine::Grid* m_GridSubsystem = nullptr;

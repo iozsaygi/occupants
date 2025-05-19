@@ -214,3 +214,14 @@ void Player::MoveToNode( Engine::Node& node )
         }
     }
 }
+
+void Player::MoveToNodeWithoutConstraints( Engine::Node& node )
+{
+    m_GridSubsystem->ActorRegistry->TryRemoveActor( this );
+    if ( m_GridSubsystem->ActorRegistry->TryRegisterActor( node, this ) )
+    {
+        Position.X = node.Position.X;
+        Position.Y = node.Position.Y;
+        m_OccupiedNode = node;
+    }
+}
