@@ -197,4 +197,20 @@ void Player::MoveToNode( Engine::Node& node )
 
         m_TurnManager->UpdateTurnStateAfterPlayer( this );
     }
+    else
+    {
+        // We failed to register because the target node was registered to another actor.
+
+        const auto& engineEntry = Engine::EngineEntry::Singleton();
+
+        Actor* occupationManagerCache = nullptr;
+        if ( engineEntry.SubsystemRegistry.WorldSubsystem.AttachedScene->ActiveSceneGraph->TryGetActorByName(
+                 "Occupation Manager", occupationManagerCache ) )
+        {
+            const auto occupationManager = dynamic_cast<OccupationManager*>( occupationManagerCache );
+
+            occupationManager->ResetCurrentOccupations();
+            m_DebuggerSubsystem->Trace( "Reset current occupations, preparing for new match" );
+        }
+    }
 }
