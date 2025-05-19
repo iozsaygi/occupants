@@ -235,6 +235,7 @@ void Player::MoveToNode( Engine::Node& node )
 
                 playerOne->MoveToNodeWithoutConstraints( playerOneSpawnNode );
                 playerTwo->MoveToNodeWithoutConstraints( playerTwoSpawnNode );
+                m_TurnManager->ResetTurnState();
             }
         }
     }

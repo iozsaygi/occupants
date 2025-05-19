@@ -1,5 +1,5 @@
 #include "TurnManager.h"
-#include <assert.h>
+#include <cassert>
 
 TurnManager::TurnManager( Player* firstPlayer, Player* secondPlayer )
 {
@@ -25,4 +25,9 @@ void TurnManager::UpdateTurnStateAfterPlayer( const Player* player )
         m_PlayerWithInCurrentTurn = m_SecondPlayer;
     else
         m_PlayerWithInCurrentTurn = m_FirstPlayer;
+}
+
+void TurnManager::ResetTurnState()
+{
+    m_PlayerWithInCurrentTurn = m_FirstPlayer;
 }

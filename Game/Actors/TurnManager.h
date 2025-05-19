@@ -10,6 +10,7 @@ public:
 
     bool CanPlayerMove( const Player* player ) const;
     void UpdateTurnStateAfterPlayer( const Player* player );
+    void ResetTurnState();
 
 private:
     Player* m_FirstPlayer = nullptr;
