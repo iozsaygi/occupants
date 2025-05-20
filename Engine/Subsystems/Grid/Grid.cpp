@@ -1,5 +1,6 @@
 #include "Grid.h"
 #include <cassert>
+#include <random>
 
 namespace Engine
 {
@@ -61,6 +62,28 @@ namespace Engine
         node = m_NodeGraph[ id ];
 
         return true;
+    }
+
+    void Grid::ProcedurallyBlockNodes() const
+    {
+        // Clear existing blockage state.
+        for ( int i = 0; i < Length; i++ )
+        {
+            if ( m_NodeGraph[ i ].State == Blocked ) m_NodeGraph[ i ].State = Available;
+        }
+
+        constexpr int capacity = 12;
+        constexpr int lowerIndex = 21;
+        constexpr int upperIndex = 45;
+
+        // See: https://stackoverflow.com/questions/36922371/generate-different-random-numbers
+        std::vector<int> indexTable;
+        for ( int i = lowerIndex; i < upperIndex; i++ ) indexTable.push_back( i );
+
+        const unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+        std::shuffle( indexTable.begin(), indexTable.end(), std::default_random_engine( seed ) );
+
+        for ( int i = 0; i < capacity; i++ ) m_NodeGraph[ indexTable[ i ] ].State = Blocked;
     }
 
     void Grid::Render( const Renderer* rendererSubsystem ) const

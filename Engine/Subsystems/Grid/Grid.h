@@ -19,6 +19,7 @@ namespace Engine
         EngineSubsystemInitializationResult Initialize() override;
         void Create( int width, int height );
         bool TryGetNodeWithID( int id, Node& node ) const;
+        void ProcedurallyBlockNodes() const;
 
         // So most of the engine subsystems doesn't require to be rendered at all.
         // This could be virtual method on the base engine subsystem class but for now grid is the only subsystem to be
