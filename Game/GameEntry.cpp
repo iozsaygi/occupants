@@ -15,6 +15,7 @@ int main( int argc, char* argv[] )
 
     engineEntry.SubsystemRegistry.WorldSubsystem.AttachScene( scene );
     engineEntry.SubsystemRegistry.GridSubsystem.Create( 10, 10 );
+    engineEntry.SubsystemRegistry.GridSubsystem.ProcedurallyBlockNodes();
 
     constexpr Engine::Color blue = { 0, 0, 255, 255 };
     constexpr Engine::Color red = { 255, 0, 0, 255 };
