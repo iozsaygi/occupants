@@ -138,29 +138,61 @@ bool Player::TryGetMovableNodeBasedOnMovementDirection( const MovementDirection 
     switch ( movementDirection )
     {
         case Upwards:
+        {
             if ( origin.Neighbors[ 0 ] != INVALID_NODE_ID )
             {
-                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 0 ], node );
+                Engine::Node upwardsNode;
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 0 ], upwardsNode );
+                if ( upwardsNode.State != Engine::Blocked )
+                {
+                    node = upwardsNode;
+                    return true;
+                }
             }
             break;
+        }
         case Downwards:
+        {
             if ( origin.Neighbors[ 2 ] != INVALID_NODE_ID )
             {
-                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 2 ], node );
+                Engine::Node downwardsNode;
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 2 ], downwardsNode );
+                if ( downwardsNode.State != Engine::Blocked )
+                {
+                    node = downwardsNode;
+                    return true;
+                }
             }
             break;
+        }
         case Left:
+        {
             if ( origin.Neighbors[ 3 ] != INVALID_NODE_ID )
             {
-                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 3 ], node );
+                Engine::Node leftNode;
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 3 ], leftNode );
+                if ( leftNode.State != Engine::Blocked )
+                {
+                    node = leftNode;
+                    return true;
+                }
             }
-            break;
+        }
+        break;
         case Right:
+        {
             if ( origin.Neighbors[ 1 ] != INVALID_NODE_ID )
             {
-                return m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 1 ], node );
+                Engine::Node rightNode;
+                m_GridSubsystem->TryGetNodeWithID( origin.Neighbors[ 1 ], rightNode );
+                if ( rightNode.State != Engine::Blocked )
+                {
+                    node = rightNode;
+                    return true;
+                }
             }
-            break;
+        }
+        break;
     }
 
     return false;
