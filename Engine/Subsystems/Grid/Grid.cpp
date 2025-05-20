@@ -73,8 +73,8 @@ namespace Engine
         }
 
         constexpr int capacity = 12;
-        constexpr int lowerIndex = 21;
-        constexpr int upperIndex = 45;
+        constexpr int lowerIndex = 31;
+        constexpr int upperIndex = 68;
 
         // See: https://stackoverflow.com/questions/36922371/generate-different-random-numbers
         std::vector<int> indexTable;
