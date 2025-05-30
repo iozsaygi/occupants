@@ -24,5 +24,15 @@ FetchContent_Declare(SDL_image GIT_REPOSITORY https://github.com/libsdl-org/SDL_
 
 FetchContent_MakeAvailable(SDL SDL_image)
 
+# Set asset search and placement directories.
+set(ASSETS_SOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/Assets")
+set(ASSETS_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/build/Assets")
+
+# Trigger custom target to copy 'Assets' folder into the build directory.
+add_custom_target(copy_assets ALL COMMAND ${CMAKE_COMMAND} -E copy_directory ${ASSETS_SOURCE_DIRECTORY} ${ASSETS_OUTPUT_DIRECTORY} COMMENT "Copying 'Assets' folder into the build directory...")
+
 add_subdirectory(Engine)
 add_subdirectory(Game)
+
+# Ensure 'Engine' is dependent on copied assets.
+add_dependencies(Engine copy_assets)
