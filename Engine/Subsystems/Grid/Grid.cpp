@@ -9,6 +9,7 @@ namespace Engine
     {
         ActorRegistry = new GridActorRegistry();
 
+        m_RendererSubsystem = &EngineEntry::Singleton().SubsystemRegistry.RendererSubsystem;
         m_AssetManagerSubsystem = &EngineEntry::Singleton().SubsystemRegistry.AssetManagerSubsystem;
 
         return SuccessfullyInitialized;
@@ -93,15 +94,10 @@ namespace Engine
     {
         for ( int i = 0; i < Length; i++ )
         {
+            const Vector2D at( m_NodeGraph[ i ].Position.X, m_NodeGraph[ i ].Position.Y );
+            const Vector2D size( NODE_SCALE, NODE_SCALE );
 
-            SDL_FRect textureRectangle;
-            textureRectangle.x = m_NodeGraph[ i ].Position.X;
-            textureRectangle.y = m_NodeGraph[ i ].Position.Y;
-            textureRectangle.w = NODE_SCALE;
-            textureRectangle.h = NODE_SCALE;
-
-            SDL_RenderTexture( rendererSubsystem->NativeRenderer, m_AssetManagerSubsystem->TileTexture.Native, nullptr,
-                               &textureRectangle );
+            m_RendererSubsystem->RenderTextureAtPosition( at, size, m_AssetManagerSubsystem->TileTexture );
         }
     }
 

@@ -2,10 +2,10 @@
 #define RENDERER_H
 
 #include <SDL3/SDL.h>
-
 #include "Color.h"
 #include "Core/EngineSubsystem.h"
 #include "Mathematics/Vector2D.h"
+#include "Texture.h"
 
 namespace Engine
 {
@@ -19,6 +19,8 @@ namespace Engine
 
         // This function is only intended for debugging purposes. Not really required for production.
         void RenderDebugRectangleAtPosition( Vector2D at, Vector2D size, Color color ) const;
+
+        void RenderTextureAtPosition( Vector2D at, Vector2D size, Texture texture ) const;
 
         void Shutdown() override;
     };

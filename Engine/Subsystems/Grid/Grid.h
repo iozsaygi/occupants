@@ -31,6 +31,7 @@ namespace Engine
 
     private:
         Node* m_NodeGraph = nullptr;
+        Renderer* m_RendererSubsystem = nullptr;
         AssetManager* m_AssetManagerSubsystem = nullptr;
     };
 } // namespace Engine

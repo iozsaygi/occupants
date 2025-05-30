@@ -25,6 +25,17 @@ namespace Engine
         SDL_RenderFillRect( NativeRenderer, &fRect );
     }
 
+    void Renderer::RenderTextureAtPosition( const Vector2D at, const Vector2D size, const Texture texture ) const
+    {
+        SDL_FRect fRect;
+        fRect.x = at.X;
+        fRect.y = at.Y;
+        fRect.w = size.X;
+        fRect.h = size.Y;
+
+        SDL_RenderTexture( NativeRenderer, texture.Native, nullptr, &fRect );
+    }
+
     void Renderer::Shutdown()
     {
         SDL_DestroyRenderer( NativeRenderer );
