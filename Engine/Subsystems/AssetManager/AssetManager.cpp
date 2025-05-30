@@ -10,7 +10,7 @@ namespace Engine
     {
         m_RendererSubsystem = EngineEntry::Singleton().SubsystemRegistry.RendererSubsystem;
 
-        if ( !TryLoadTexture( AssetConstants::TileTexturePath.c_str(), TileTexture ) ) return FailedToInitialize;
+        if ( !TryLoadTexture( AssetConstants::TileTexturePath, TileTexture ) ) return FailedToInitialize;
 
         return SuccessfullyInitialized;
     }
