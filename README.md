@@ -29,6 +29,12 @@ this repository won't have to deal with dependency management:
 - `chmod +x build.sh`
 - `./build.sh`
 
+## Credits
+
+### Art
+
+- [Chris Hamons](https://opengameart.org/content/dungeon-crawl-32x32-tiles)
+
 ## License
 
 [MIT License](https://github.com/iozsaygi/occupants/blob/main/LICENSE)
