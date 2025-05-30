@@ -2,6 +2,7 @@
 #define ENGINE_SUBSYSTEM_REGISTRY_H
 
 #include "EngineAPI.h"
+#include "Subsystems/AssetManager/AssetManager.h"
 #include "Subsystems/Debugger/Debugger.h"
 #include "Subsystems/Grid/Grid.h"
 #include "Subsystems/Platform/Platform.h"
@@ -20,6 +21,7 @@ namespace Engine
         Renderer RendererSubsystem;
         World WorldSubsystem;
         Grid GridSubsystem;
+        AssetManager AssetManagerSubsystem;
     };
 } // namespace Engine
 

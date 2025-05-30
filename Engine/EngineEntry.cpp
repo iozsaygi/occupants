@@ -9,6 +9,7 @@ namespace Engine
         if ( SubsystemRegistry.RendererSubsystem.Initialize() == FailedToInitialize ) return Unstable;
         if ( SubsystemRegistry.WorldSubsystem.Initialize() == FailedToInitialize ) return Unstable;
         if ( SubsystemRegistry.GridSubsystem.Initialize() == FailedToInitialize ) return Unstable;
+        if ( SubsystemRegistry.AssetManagerSubsystem.Initialize() == FailedToInitialize ) return Unstable;
 
         SubsystemRegistry.DebuggerSubsystem.Trace( "Successfully initialized registered engine subsystems." );
 
@@ -17,6 +18,7 @@ namespace Engine
 
     void EngineEntry::ShutdownSubsystems()
     {
+        SubsystemRegistry.AssetManagerSubsystem.Shutdown();
         SubsystemRegistry.GridSubsystem.Shutdown();
         SubsystemRegistry.WorldSubsystem.Shutdown();
         SubsystemRegistry.RendererSubsystem.Shutdown();
