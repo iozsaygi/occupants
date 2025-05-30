@@ -2,6 +2,7 @@
 #define ASSET_MANAGER_H
 
 #include "Core/EngineSubsystem.h"
+#include "Subsystems/Debugger/Debugger.h"
 #include "Subsystems/Renderer/Renderer.h"
 #include "Subsystems/Renderer/Texture.h"
 
@@ -19,7 +20,8 @@ namespace Engine
         void Shutdown() override;
 
     private:
-        Renderer m_RendererSubsystem;
+        Debugger* m_DebuggerSubsystem = nullptr;
+        Renderer* m_RendererSubsystem = nullptr;
     };
 } // namespace Engine
 
