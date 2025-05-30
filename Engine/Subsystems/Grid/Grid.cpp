@@ -1,12 +1,15 @@
 #include "Grid.h"
 #include <cassert>
 #include <random>
+#include "EngineEntry.h"
 
 namespace Engine
 {
     EngineSubsystemInitializationResult Grid::Initialize()
     {
         ActorRegistry = new GridActorRegistry();
+
+        m_AssetManagerSubsystem = &EngineEntry::Singleton().SubsystemRegistry.AssetManagerSubsystem;
 
         return SuccessfullyInitialized;
     }
@@ -90,27 +93,15 @@ namespace Engine
     {
         for ( int i = 0; i < Length; i++ )
         {
-            // TODO: This is for testing of blocked nodes, remove later.
-            if ( m_NodeGraph[ i ].State == Blocked )
-            {
-                SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 255, 0, 0, 0 );
-                SDL_FRect nodeRect;
-                nodeRect.x = m_NodeGraph[ i ].Position.X;
-                nodeRect.y = m_NodeGraph[ i ].Position.Y;
-                nodeRect.w = NODE_SCALE;
-                nodeRect.h = NODE_SCALE;
-                SDL_RenderFillRect( rendererSubsystem->NativeRenderer, &nodeRect );
-            }
-            else
-            {
-                SDL_SetRenderDrawColor( rendererSubsystem->NativeRenderer, 255, 255, 255, 255 );
-                SDL_FRect nodeRect;
-                nodeRect.x = m_NodeGraph[ i ].Position.X;
-                nodeRect.y = m_NodeGraph[ i ].Position.Y;
-                nodeRect.w = NODE_SCALE;
-                nodeRect.h = NODE_SCALE;
-                SDL_RenderRect( rendererSubsystem->NativeRenderer, &nodeRect );
-            }
+
+            SDL_FRect textureRectangle;
+            textureRectangle.x = m_NodeGraph[ i ].Position.X;
+            textureRectangle.y = m_NodeGraph[ i ].Position.Y;
+            textureRectangle.w = NODE_SCALE;
+            textureRectangle.h = NODE_SCALE;
+
+            SDL_RenderTexture( rendererSubsystem->NativeRenderer, m_AssetManagerSubsystem->TileTexture.Native, nullptr,
+                               &textureRectangle );
         }
     }
 

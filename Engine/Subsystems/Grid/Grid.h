@@ -4,6 +4,7 @@
 #include "Core/EngineSubsystem.h"
 #include "GridActorRegistry.h"
 #include "Node.h"
+#include "Subsystems/AssetManager/AssetManager.h"
 #include "Subsystems/Renderer/Renderer.h"
 
 namespace Engine
@@ -30,6 +31,7 @@ namespace Engine
 
     private:
         Node* m_NodeGraph = nullptr;
+        AssetManager* m_AssetManagerSubsystem = nullptr;
     };
 } // namespace Engine
 
