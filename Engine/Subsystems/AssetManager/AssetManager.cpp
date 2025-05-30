@@ -1,5 +1,7 @@
 #include "AssetManager.h"
 #include <SDL3_image/SDL_image.h>
+
+#include "AssetConstants.h"
 #include "EngineEntry.h"
 
 namespace Engine
@@ -7,6 +9,8 @@ namespace Engine
     EngineSubsystemInitializationResult AssetManager::Initialize()
     {
         m_RendererSubsystem = EngineEntry::Singleton().SubsystemRegistry.RendererSubsystem;
+
+        if ( !TryLoadTexture( AssetConstants::TileTexturePath.c_str(), TileTexture ) ) return FailedToInitialize;
 
         return SuccessfullyInitialized;
     }

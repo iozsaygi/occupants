@@ -10,6 +10,8 @@ namespace Engine
     class AssetManager final : public EngineSubsystem
     {
     public:
+        Texture TileTexture;
+
         EngineSubsystemInitializationResult Initialize() override;
 
         bool TryLoadTexture( const char* path, Texture& texture ) const;
