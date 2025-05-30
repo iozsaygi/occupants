@@ -16,6 +16,7 @@ The following dependencies are automatically downloaded, extracted, and linked t
 this repository won't have to deal with dependency management:
 
 - [SDL3](https://www.libsdl.org)
+- [SDL Image](https://github.com/libsdl-org/SDL_image)
 
 ## Building
 
