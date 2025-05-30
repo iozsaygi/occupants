@@ -25,5 +25,6 @@ namespace Engine
 
     void AssetManager::Shutdown()
     {
+        SDL_DestroyTexture( TileTexture.Native );
     }
 } // namespace Engine
