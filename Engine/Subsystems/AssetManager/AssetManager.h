@@ -2,6 +2,8 @@
 #define ASSET_MANAGER_H
 
 #include "Core/EngineSubsystem.h"
+#include "Subsystems/Renderer/Renderer.h"
+#include "Subsystems/Renderer/Texture.h"
 
 namespace Engine
 {
@@ -9,7 +11,13 @@ namespace Engine
     {
     public:
         EngineSubsystemInitializationResult Initialize() override;
+
+        bool TryLoadTexture( const char* path, Texture& texture ) const;
+
         void Shutdown() override;
+
+    private:
+        Renderer m_RendererSubsystem;
     };
 } // namespace Engine
 

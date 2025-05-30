@@ -1,10 +1,22 @@
 #include "AssetManager.h"
+#include <SDL3_image/SDL_image.h>
+#include "EngineEntry.h"
 
 namespace Engine
 {
     EngineSubsystemInitializationResult AssetManager::Initialize()
     {
+        m_RendererSubsystem = EngineEntry::Singleton().SubsystemRegistry.RendererSubsystem;
+
         return SuccessfullyInitialized;
+    }
+
+    bool AssetManager::TryLoadTexture( const char* path, Texture& texture ) const
+    {
+        texture.Native = IMG_LoadTexture( m_RendererSubsystem.NativeRenderer, path );
+        if ( texture.Native == nullptr ) return false;
+
+        return true;
     }
 
     void AssetManager::Shutdown()
