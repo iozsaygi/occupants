@@ -4,13 +4,15 @@
 #include "TurnManager.h"
 
 Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const Engine::Color associatedColor,
-                OccupationManager* occupationManager, const Engine::Texture texture )
+                OccupationManager* occupationManager, const Engine::Texture texture,
+                const Engine::Texture spreadTexture )
 {
     m_ControlScheme = controlScheme;
     SpawnNodeID = spawnNodeID;
     AssociatedColor = associatedColor;
     m_OccupationManager = occupationManager;
     m_Texture = texture;
+    OccupationTexture = spreadTexture;
 }
 
 void Player::OnSceneStart()

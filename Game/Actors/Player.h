@@ -25,9 +25,10 @@ class Player final : public Engine::Actor
 public:
     int SpawnNodeID;
     Engine::Color AssociatedColor;
+    Engine::Texture OccupationTexture;
 
     Player( ControlScheme controlScheme, int spawnNodeID, Engine::Color associatedColor,
-            OccupationManager* occupationManager, Engine::Texture texture );
+            OccupationManager* occupationManager, Engine::Texture texture, Engine::Texture occupationTexture );
 
     void OnSceneStart() override;
     void OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame ) override;

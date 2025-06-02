@@ -15,6 +15,8 @@ namespace Engine
         Texture BlockedNodeTexture;
         Texture PlayerOneTexture;
         Texture PlayerTwoTexture;
+        Texture PlayerOneSpreadTexture;
+        Texture PlayerTwoSpreadTexture;
 
         EngineSubsystemInitializationResult Initialize() override;
 

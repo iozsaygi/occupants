@@ -22,9 +22,11 @@ int main( int argc, char* argv[] )
 
     const auto occupationManager = new OccupationManager();
     const auto firstPlayer = new Player( WASD, 90, blue, occupationManager,
-                                         engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerOneTexture );
+                                         engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerOneTexture,
+                                         engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerOneSpreadTexture );
     const auto secondPlayer = new Player( Arrows, 9, red, occupationManager,
-                                          engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerTwoTexture );
+                                          engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerTwoTexture,
+                                          engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerTwoSpreadTexture );
     const auto turnManager = new TurnManager( firstPlayer, secondPlayer );
 
     firstPlayer->Name = "Player 1";

@@ -19,10 +19,10 @@ void OccupationManager::OnSceneRender( Engine::Renderer* rendererSubsystem )
         Engine::Node occupationNode;
         if ( !m_GridSubsystem->TryGetNodeWithID( occupationData.NodeID, occupationNode ) ) continue;
 
-        const Engine::Vector2D scale( 16.0f, 16.0f );
+        const Engine::Vector2D scale( 32.0f, 32.0f );
 
-        rendererSubsystem->RenderDebugRectangleAtPosition( occupationNode.Position, scale,
-                                                           occupationData.Owner->AssociatedColor );
+        rendererSubsystem->RenderTextureAtPosition( occupationNode.Position, scale,
+                                                    occupationData.Owner->OccupationTexture );
     }
 }
 
