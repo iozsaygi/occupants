@@ -98,6 +98,11 @@ namespace Engine
             const Vector2D size( NODE_SCALE, NODE_SCALE );
 
             m_RendererSubsystem->RenderTextureAtPosition( at, size, m_AssetManagerSubsystem->TileTexture );
+
+            if ( m_NodeGraph[ i ].State == Blocked )
+            {
+                m_RendererSubsystem->RenderTextureAtPosition( at, size, m_AssetManagerSubsystem->BlockedNodeTexture );
+            }
         }
     }
 

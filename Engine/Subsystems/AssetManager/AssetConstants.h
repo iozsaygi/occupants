@@ -7,6 +7,7 @@ namespace Engine
     {
         // Texture constants.
         static constexpr auto TileTexturePath = "Assets/Textures/Tile.png";
+        static constexpr auto BlockedNodeTexturePath = "Assets/Textures/Block.png";
     };
 } // namespace Engine
 

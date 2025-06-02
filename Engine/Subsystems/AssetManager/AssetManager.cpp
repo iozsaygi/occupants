@@ -42,6 +42,7 @@ namespace Engine
 #endif // __APPLE__
 
         if ( !TryLoadTexture( AssetConstants::TileTexturePath, TileTexture ) ) return FailedToInitialize;
+        if ( !TryLoadTexture( AssetConstants::BlockedNodeTexturePath, BlockedNodeTexture ) ) return FailedToInitialize;
 
         return SuccessfullyInitialized;
     }
@@ -62,5 +63,6 @@ namespace Engine
     void AssetManager::Shutdown()
     {
         SDL_DestroyTexture( TileTexture.Native );
+        SDL_DestroyTexture( BlockedNodeTexture.Native );
     }
 } // namespace Engine
