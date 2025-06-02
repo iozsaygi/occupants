@@ -5,7 +5,14 @@ generated grid map to win.
 
 Currently, the development is focused on macOS, but Windows will also be supported at some point.
 
+<p align="center">
+    <img alt="Gameplay Screenshot" src="https://github.com/iozsaygi/occupants/blob/main/Media/Gameplay%20SS.png?raw=true">
+</p>
+
 ## Changelog
+
+- v0.2 (July 02, 2025)
+    - Removed debug render calls and added textures for gameplay systems.
 
 - v0.1 (May 19, 2025)
     - Gameplay mechanics are finished, and the game needs a decent polish at this point.
