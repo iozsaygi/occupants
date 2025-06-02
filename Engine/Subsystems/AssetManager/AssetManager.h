@@ -13,6 +13,8 @@ namespace Engine
     public:
         Texture TileTexture;
         Texture BlockedNodeTexture;
+        Texture PlayerOneTexture;
+        Texture PlayerTwoTexture;
 
         EngineSubsystemInitializationResult Initialize() override;
 

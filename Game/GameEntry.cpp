@@ -21,14 +21,22 @@ int main( int argc, char* argv[] )
     constexpr Engine::Color red = { 255, 0, 0, 255 };
 
     const auto occupationManager = new OccupationManager();
-    const auto firstPlayer = new Player( WASD, 90, blue, occupationManager );
-    const auto secondPlayer = new Player( Arrows, 9, red, occupationManager );
+    const auto firstPlayer = new Player( WASD, 90, blue, occupationManager,
+                                         engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerOneTexture );
+    const auto secondPlayer = new Player( Arrows, 9, red, occupationManager,
+                                          engineEntry.SubsystemRegistry.AssetManagerSubsystem.PlayerTwoTexture );
     const auto turnManager = new TurnManager( firstPlayer, secondPlayer );
 
     firstPlayer->Name = "Player 1";
     secondPlayer->Name = "Player 2";
     occupationManager->Name = "Occupation Manager";
     turnManager->Name = "Turn Manager";
+
+    if ( !scene->ActiveSceneGraph->TryRegisterActor( occupationManager ) )
+    {
+        engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
+            "Failed to register 'Occupation Manager' actor to the attached scene!" );
+    }
 
     if ( !scene->ActiveSceneGraph->TryRegisterActor( firstPlayer ) )
     {
@@ -40,12 +48,6 @@ int main( int argc, char* argv[] )
     {
         engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
             "Failed to register 'Second Player' actor to the attached scene!" );
-    }
-
-    if ( !scene->ActiveSceneGraph->TryRegisterActor( occupationManager ) )
-    {
-        engineEntry.SubsystemRegistry.DebuggerSubsystem.Error(
-            "Failed to register 'Occupation Manager' actor to the attached scene!" );
     }
 
     if ( !scene->ActiveSceneGraph->TryRegisterActor( turnManager ) )

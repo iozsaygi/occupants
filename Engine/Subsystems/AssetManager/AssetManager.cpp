@@ -43,6 +43,8 @@ namespace Engine
 
         if ( !TryLoadTexture( AssetConstants::TileTexturePath, TileTexture ) ) return FailedToInitialize;
         if ( !TryLoadTexture( AssetConstants::BlockedNodeTexturePath, BlockedNodeTexture ) ) return FailedToInitialize;
+        if ( !TryLoadTexture( AssetConstants::PlayerOneTexturePath, PlayerOneTexture ) ) return FailedToInitialize;
+        if ( !TryLoadTexture( AssetConstants::PlayerTwoTexturePath, PlayerTwoTexture ) ) return FailedToInitialize;
 
         return SuccessfullyInitialized;
     }

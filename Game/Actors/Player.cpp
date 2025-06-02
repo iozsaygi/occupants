@@ -4,12 +4,13 @@
 #include "TurnManager.h"
 
 Player::Player( const ControlScheme controlScheme, const int spawnNodeID, const Engine::Color associatedColor,
-                OccupationManager* occupationManager )
+                OccupationManager* occupationManager, const Engine::Texture texture )
 {
     m_ControlScheme = controlScheme;
     SpawnNodeID = spawnNodeID;
     AssociatedColor = associatedColor;
     m_OccupationManager = occupationManager;
+    m_Texture = texture;
 }
 
 void Player::OnSceneStart()
@@ -125,7 +126,7 @@ void Player::OnSceneUpdate( float deltaTime, const Engine::DispatchableEvent dis
 
 void Player::OnSceneRender( Engine::Renderer* rendererSubsystem )
 {
-    rendererSubsystem->RenderDebugRectangleAtPosition( Position, Scale, AssociatedColor );
+    rendererSubsystem->RenderTextureAtPosition( Position, Scale, m_Texture );
 }
 
 void Player::OnSceneShutdown()

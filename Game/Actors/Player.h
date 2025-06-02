@@ -27,7 +27,7 @@ public:
     Engine::Color AssociatedColor;
 
     Player( ControlScheme controlScheme, int spawnNodeID, Engine::Color associatedColor,
-            OccupationManager* occupationManager );
+            OccupationManager* occupationManager, Engine::Texture texture );
 
     void OnSceneStart() override;
     void OnSceneUpdate( float deltaTime, Engine::DispatchableEvent dispatchedEventForCurrentFrame ) override;
@@ -44,10 +44,9 @@ private:
     Engine::Debugger* m_DebuggerSubsystem = nullptr;
     OccupationManager* m_OccupationManager;
     TurnManager* m_TurnManager;
-
     Engine::Node m_OccupiedNode;
-
     ControlScheme m_ControlScheme;
+    Engine::Texture m_Texture;
 };
 
 #endif // PLAYER_H
