@@ -9,6 +9,28 @@ Currently, the development is focused on macOS, but Windows will also be support
     <img alt="Gameplay Screenshot" src="https://github.com/iozsaygi/occupants/blob/main/Media/Gameplay%20SS.png?raw=true">
 </p>
 
+## Preface
+
+_'Occupants' was pretty much a test case to see how I'll come up with an engine design for a basic turn-based game.
+Creating and maintaining an engine for the game idea takes tons of effort.
+The engine is separated into several subsystems, and the game itself won't even launch if any engine subsystem fails to
+initialize. Ensuring the client (game) relies on engine subsystems to function correctly. This idea also ensures
+developers fix any issue within the engine or in the game instead of hiding issues for a later time.
+
+Engine is almost cross-platform except for the `asset manager` subsystem. The asset manager has to read the working
+directory to fetch assets that are needed to be loaded into memory. To set the working directory, I had to write a bit
+of macOS-specific code, but I am pretty sure it won't be an issue if any porting work arises. Please
+see [here](https://github.com/iozsaygi/occupants/blob/main/Engine/Subsystems/AssetManager/AssetManager.cpp) for
+greater detail.
+
+It would be a mistake if I didn't talk about the build and asset pipeline. Dependencies are fully automated and compiled
+with the engine's source code. `SDL` and `SDL_image` are pretty much open source, and we are able to clone specific
+release
+revisions and build these with the game with the help of `CMake`.
+
+For the asset pipeline, the `Assets` folder is automatically cloned into the working directory of the game during the
+post-build process, ensuring the engine and game will work with the latest versions of the available assets._
+
 ## Changelog
 
 - v0.2 (July 02, 2025)
