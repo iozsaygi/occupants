@@ -11,7 +11,7 @@ Currently, the development is focused on macOS, but Windows will also be support
 
 ## Preface
 
-`Occupants` was pretty much a test case to see how I'll come up with an engine design for a basic turn-based game.
+`Occupants was pretty much a test case to see how I'll come up with an engine design for a basic turn-based game.
 Creating and maintaining an engine for the game idea takes tons of effort.
 The engine is separated into several subsystems, and the game itself won't even launch if any engine subsystem fails to
 initialize. Ensuring the client (game) relies on engine subsystems to function correctly. This idea also ensures
