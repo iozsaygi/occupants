@@ -15,7 +15,7 @@ Currently, the development is focused on macOS, but Windows will also be support
 Creating and maintaining an engine for the game idea takes tons of effort.
 The engine is separated into several subsystems, and the game itself won't even launch if any engine subsystem fails to
 initialize. Ensuring the client (game) relies on engine subsystems to function correctly. This idea also ensures
-developers fix any issue within the engine or in the game instead of hiding issues for a later time.
+developers to fix any issue within the engine or in the game instead of hiding issues for a later time.
 
 Engine is almost cross-platform except for the `asset manager` subsystem. The asset manager has to read the working
 directory to fetch assets that are needed to be loaded into memory. To set the working directory, I had to write a bit
